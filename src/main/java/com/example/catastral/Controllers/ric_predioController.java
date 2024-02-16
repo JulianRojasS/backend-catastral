@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -22,5 +23,10 @@ public class ric_predioController {
     @PostMapping(path = "/prediosByLike/{column}/{value}")
     public List<ric_predio> listByLike (@PathVariable("column") String column, @PathVariable("value") String value) {
         return service.predioByLike(column, value);
+    }
+
+    @PostMapping(path = "/predioDetalleInteresado/{t_id}")
+    public List<Map<String, Object>> listDetalleInteresado (@PathVariable("t_id") Integer t_id) {
+        return service.predioDetalleInteresado(t_id);
     }
 }

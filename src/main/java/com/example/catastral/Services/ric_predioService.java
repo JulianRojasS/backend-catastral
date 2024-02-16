@@ -5,6 +5,7 @@ import com.example.catastral.Repositories.ric_predioRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class ric_predioService {
@@ -19,5 +20,9 @@ public class ric_predioService {
         String uppervalue = value.toUpperCase();
 
         return repository.buscarValor(column, uppervalue);
+    }
+
+    public List<Map<String, Object>> predioDetalleInteresado (Integer t_id) {
+        return repository.detalleConsultaInteresado(t_id);
     }
 }

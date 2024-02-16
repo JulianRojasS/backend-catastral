@@ -23,4 +23,9 @@ public class ric_interesadoController {
     public List<ric_interesado> listByLike (@PathVariable("column") String column, @PathVariable("value") String value) {
         return service.interesadoByLike(column, value);
     }
+
+    @PostMapping(path = "/interesadosDetalleConsulta/{t_id}")
+    public List<Map<String, Object>> listByDocument (@PathVariable("t_id") Integer t_id) {
+        return service.interesadosByDocument(t_id);
+    }
 }
