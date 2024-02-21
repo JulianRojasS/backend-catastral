@@ -42,10 +42,10 @@ public class UsersController {
         List<Users> usersList = service.AllUsers();
         for (Users user : usersList) {
             if (user.getEmail().equals(correo) && user.getContrasenia().equals(password)) {
-                return "<script>window.location.href = 'http://127.0.0.1:5500/src/views/consultas.html';</script>";
+                return "<script>window.location.href = 'http://127.0.0.1:5501/src/views/consultas.html';</script>";
             }
         }
-        return "<script>window.location.href = 'http://127.0.0.1:5500/login.html';</script>";
+        return "<script>window.location.href = 'http://127.0.0.1:5501/login.html';</script>";
     }
 
 
