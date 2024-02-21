@@ -25,4 +25,8 @@ public class ric_predioService {
     public List<Map<String, Object>> predioDetalleInteresado (Integer t_id) {
         return repository.detalleConsultaInteresado(t_id);
     }
+
+    public List<Map<String, Object>> predioDetalle (Integer t_id) {
+        return repository.predio(t_id);
+    }
 }

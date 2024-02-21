@@ -23,4 +23,8 @@ public class ric_interesadoService {
     public List<Map<String, Object>> interesadosByDocument (Integer t_id) {
         return repository.detalleConsulta(t_id);
     }
+
+    public List<Map<String, Object>> predioDetalle (Integer t_id) {
+        return repository.detalleConsultaPredio(t_id);
+    }
 }

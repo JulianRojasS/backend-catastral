@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Predio</title>
+    <link rel="stylesheet" href="/predio.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+</head>
+<body>
+    <section>
+        <h1>Informacion predio</h1>
+        <label for="departamento">Departamento</label>
+        <input id="departamento" th:value="${predio[0].departamento}" disabled>
+        <label for="municipio">Municipio</label>
+        <input id="municipio" th:value="${predio[0].municipio}" disabled>
+        <label for="t_id">Código Operación</label>
+        <input id="t_id" th:value="${predio[0].numero_predial}" disabled>
+        <label for="codigo_orip">Código ORIP</label>
+        <input id="codigo_orip" th:value="${predio[0].codigo_orip}" disabled>
+        <label for="matricula_inmobiliaria">Matricula Inmobiliaria</label>
+        <input id="matricula_inmobiliaria" th:value="${predio[0].matricula_inmobiliaria}" disabled>
+        <label for="numero_predial">Numero Predial</label>
+        <input id="numero_predial" th:value="${predio[0].numero_predial}" disabled>
+        <label for="numero_predial_anterior">Numero Predial Anterior</label>
+        <input id="numero_predial_anterior" th:value="${predio[0].numero_predial_anterior}" disabled>
+        <label for="codigo_homologado">Código Homologado</label>
+        <input id="codigo_homologado" th:value="${predio[0].codigo_homologado}" disabled>
+        <label for="nupre">Nupre</label>
+        <input id="nupre" th:value="${predio[0].nupre}" disabled>
+        <label for="avaluo_catastral">Avaluo Catastral</label>
+        <input id="avaluo_catastral" th:value="${predio[0].avaluo_catastral}" disabled>
+        <label for="p_tipo">Tipo</label>
+        <input id="p_tipo" th:value="${predio[0].tipo}" disabled>
+        <label for="condicion_predio">Condición del predio</label>
+        <input id="condicion_predio" th:value="${predio[0].condicion_predio}" disabled>
+        <label for="destinacion_economica">Destinación economica</label>
+        <input id="destinacion_economica" th:value="${predio[0].destinacion_economica}" disabled>
+        <label for="zona">Clase suelo</label>
+        <input id="zona" th:value="${predio[0].zona}" disabled>
+    </section>
+    <section>
+        <h1>Direccion</h1>
+        <table class="direccion">
+            <thead>
+                <th>Tipo de dirección</th>
+                <th>Direccion Principal</th>
+                <th>Código Postal</th>
+                <th>Clase Via Principal</th>
+                <th>Valor Via Principal</th>
+                <th>Letra Via Principal</th>
+                <th>Sector Ciudad</th>
+                <th>Valor Via Generadora</th>
+                <th>Letra Via Generadora</th>
+                <th>Número Predio</th>
+                <th>Sector Predio</th>
+                <th>Complemento</th>
+                <th>Nombre Predio</th>
+            </thead>
+            <tbody>
+                <tr th:each="dir : ${direccion}">
+                    <td><input id="tipo_direccion" th:value="${dir.tipo_direccion}" disabled></td>
+                    <td><input id="es_direccion_principal" type="checkbox" th:checked="${direccion.get(0).es_direccion_principal}" disabled></td>
+                    <td><input id="codigo_postal" th:value="${dir.codigo_postal}" disabled></td>
+                    <td><input id="clase_via_principal" th:value="${dir.clase_via_principal}" disabled></td>
+                    <td><input id="valor_via_principal" th:value="${dir.valor_via_principal}" disabled></td>
+                    <td><input id="letra_via_principal" th:value="${dir.letra_via_principal}" disabled></td>
+                    <td><input id="sector_ciudad" th:value="${dir.sector_ciudad}" disabled></td>
+                    <td><input id="valor_via_generadora" th:value="${dir.valor_via_generadora}" disabled></td>
+                    <td><input id="letra_via_generadora" th:value="${dir.letra_via_generadora}" disabled></td>
+                    <td><input id="numero_predio" th:value="${dir.numero_predio}" disabled></td>
+                    <td><input id="sector_predio" th:value="${dir.sector_predio}" disabled></td>
+                    <td><input id="complemento" th:value="${dir.complemento}" disabled></td>
+                    <td><input id="nombre_predio" th:value="${dir.nombre_predio}" disabled></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <section>
+        <h1>Informacion juridica</h1>
+        <h2>Derecho</h2>
+        <table>
+            <thead>
+                <th>Tipo de derecho</th>
+                <th>Fracción del derecho</th>
+                <th>Fecha de documento fuente</th>
+                <th>Descripción</th>
+            </thead>
+            <tbody>
+                <tr th:each="derecho : ${derechos}">
+                    <td><input id="d_tipo" th:value="${derecho.tipo}" disabled></td>
+                    <td><input id="fraccion_derecho" th:value="${derecho.fraccion_derecho}" disabled></td>
+                    <td><input id="fecha_documento_fuente" th:value="${derecho.fecha_inicio_tenencia}" disabled></td>
+                    <td><input id="descripcion" th:value="${derecho.descripcion}" disabled></td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>Fuente Administartiva</h2>
+        <table>
+            <thead>
+                <th>Tipo de fuente</th>
+                <th>Ente emisor</th>
+                <th>Observaciónes</th>
+                <th>Numero fuente</th>
+                <th>Estado disponibilidad</th>
+                <th>Tipo principal</th>
+                <th>Fecha de documento fuente</th>
+            </thead>
+            <tbody>
+                <tr th:each="fuente : ${fuenteadministrativa}">
+                    <td><input id="tipo" th:value="${fuente.tipo}" disabled></td>
+                    <td><input id="ente_emisor" th:value="${fuente.ente_emisor}" disabled></td>
+                    <td><input id="observacion" th:value="${fuente.observacion}" disabled></td>
+                    <td><input id="numero_fuente" th:value="${fuente.numero_fuente}" disabled></td>
+                    <td><input id="estado_disponibilidad" th:value="${fuente.estado_disponibilidad}" disabled></td>
+                    <td><input id="tipo_principal" th:value="${fuente.tipo_principal}" disabled></td>
+                    <td><input id="f_fecha_documento_fuente" th:value="${fuente.fecha_documento_fuente}" disabled></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <section>
+        <h1>Informacion de interesados</h1>
+        <table>
+            <thead>
+            <tr>
+                <th>Tipo de Documento</th>
+                <th>Número de Documento</th>
+                <th>Nombre/Razon Social</th>
+                <th>Participación</th>
+                <th>Ver</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="interesado : ${interesados}">
+                <td th:text="${interesado.tipo_documento}"></td>
+                <td th:text="${interesado.documento_identidad}"></td>
+                <td th:text="${interesado.nombre}"></td>
+                <td th:text="${interesado.participacion}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+    <section>
+        <h1>Construcciones</h1>
+    </section>
+    <section>
+        <h1>Unnidades de construcción</h1>
+        <table>
+            <thead>
+                <th>Ubicacion de planta</th>
+                <th>Area Consturida</th>
+                <th>Altura</th>
+                <th>Geometria</th>
+            </thead>
+            <tbody>
+                <tr th:each="unidad : ${unidadesC}">
+                    <td th:text="${unidad.getPlanta_ubicacion()}"></td>
+                    <td th:text="${unidad.getArea_construida()}"></td>
+                    <td th:text="${unidad.getAltura()}"></td>
+                    <td th:text="${unidad.getGeometria()}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <section>
+        <h1>Terrenos</h1>
+        <table>
+            <thead>
+                <th>Manzana/Vereda</th>
+                <th>Area</th>
+                <th>Geometria</th>
+            </thead>
+            <tbody>
+                <tr th:each="terreno : ${terrenos}">
+                    <td th:text="${predio[0].numero_predial.substring(0,17)}"></td>
+                    <td th:text="${terreno.area_terreno}"></td>
+
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <div id="map"></div>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/wkx@0.5.0/dist/wkx.min.js"></script>
+    <script th:inline="javascript">
+        var coordenadasConsulta = /*[[${geometriasT}]]*/ '';
+
+        function convertirCoordenadas(consulta) {
+            var coordsString = consulta.replace("MULTIPOLYGON Z (((", "").replace(")))", "");
+            var coords = coordsString.split(",").map(function(point) {
+                var coordsZ = point.trim().split(" ").map(parseFloat);
+                return [coordsZ[1], coordsZ[0]];
+            });
+            return coords;
+        }
+
+        var map = L.map('map');
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        coordenadasConsulta.forEach(function(coordenadas) {
+            var coordsLeaflet = convertirCoordenadas(coordenadas.geometria);
+            var polygon = L.polygon(coordsLeaflet).addTo(map);
+
+            // Obtener los límites del polígono
+            var bounds = polygon.getBounds();
+
+            // Ajustar el centro del mapa y el zoom para que los polígonos sean visibles
+            map.fitBounds(bounds);
+        });
+    </script>
+</body>
+</html>

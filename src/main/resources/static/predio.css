@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    background-color: gray;
+    flex-wrap: wrap;
+    margin: 5px;
+}
+
+.direccion {
+    font-size: 10px;
+    background-color: red;
+}
+
+.direccion input {
+    font-size: 10px;
+}
+
+input {
+    width: 100%;
+}
+
+input:disabled {
+    color: black;
+    background-color: white;
+}
+
+input[type="checkbox"]:disabled {
+    background-color: blue;
+}
+
+table {
+    text-align: center;
+}
+
+#map {
+    height: 400px;
+}
