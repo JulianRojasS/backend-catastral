@@ -36,21 +36,19 @@ public class UsersController {
         return emailsAndPasswords;
     }
 
-    @PostMapping("/login")
-    public String login(@RequestParam("correo") String correo, @RequestParam("password") String password) {
-
-        List<Users> usersList = service.AllUsers();
-        for (Users user : usersList) {
-            if (user.getEmail().equals(correo) && user.getContrasenia().equals(password)) {
-                return "<script>window.location.href = 'http://127.0.0.1:5501/src/views/consultas.html';</script>";
-            }
-        }
-        return "<script>window.location.href = 'http://127.0.0.1:5501/login.html';</script>";
+    @GetMapping(path = "/User/{email}")
+    public Users User (@PathVariable("email") String email) {
+        return service.UserByEmail(email);
     }
 
+    @PostMapping("/login")
+    public Boolean login(@RequestParam("email") String email, @RequestParam("password") String password) {
+        return service.Login(email, password);
+    }
 
-
-
-
+    @PutMapping("/actualizarUsuario/{id}")
+    public Boolean actualizar (@PathVariable("id") Integer id, Users u) {
+        return service.Actualizar(id, u);
+    }
 
 }

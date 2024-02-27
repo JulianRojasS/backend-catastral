@@ -14,8 +14,9 @@ public class ric_predioRoutes {
     private ric_interesadoService ricInteresadoService;
     private col_uebaunitService colUebaunitService;
     private ric_unidadconstruccionService ricUnidadconstruccionService;
+    private ric_contruccionService ricContruccionService;
 
-    public ric_predioRoutes(ric_predioService service, extdireccionService extdireccionService, ric_derechoService ricDerechoService, ric_fuenteadministrativaService ricFuenteadministrativaService, ric_interesadoService ricInteresadoService, col_uebaunitService colUebaunitService, ric_unidadconstruccionService ricUnidadconstruccionService) {
+    public ric_predioRoutes(ric_predioService service, extdireccionService extdireccionService, ric_derechoService ricDerechoService, ric_fuenteadministrativaService ricFuenteadministrativaService, ric_interesadoService ricInteresadoService, col_uebaunitService colUebaunitService, ric_unidadconstruccionService ricUnidadconstruccionService, ric_contruccionService ricContruccionService) {
         this.service = service;
         this.extdireccionService = extdireccionService;
         this.ricDerechoService = ricDerechoService;
@@ -23,6 +24,7 @@ public class ric_predioRoutes {
         this.ricInteresadoService = ricInteresadoService;
         this.colUebaunitService = colUebaunitService;
         this.ricUnidadconstruccionService = ricUnidadconstruccionService;
+        this.ricContruccionService = ricContruccionService;
     }
     @GetMapping("/predio/{t_id}")
     public String predioDetalle (@PathVariable("t_id") Integer t_id, Model model ) {
@@ -31,9 +33,12 @@ public class ric_predioRoutes {
         model.addAttribute("derechos", ricDerechoService.derechoPorPredio(t_id));
         model.addAttribute("fuenteadministrativa", ricFuenteadministrativaService.fuenteadministrativaPredio(t_id));
         model.addAttribute("interesados", ricInteresadoService.predioDetalle(t_id));
-        model.addAttribute("unidadesC",ricUnidadconstruccionService.unidadConstruccionPredio(t_id));
+        model.addAttribute("contrucciones", ricContruccionService.construccionPredio(t_id));
+        model.addAttribute("unidadesC",colUebaunitService.unidadConstruccionDetallePredio(t_id));
         model.addAttribute("terrenos", colUebaunitService.terrenoDetallePredio(t_id));
         model.addAttribute("geometriasT", colUebaunitService.geometriasTerreno(t_id));
+        model.addAttribute("geometriasC", colUebaunitService.geometriasConstruccion(t_id));
+        model.addAttribute("geometriasUC", colUebaunitService.geometriasUnidadConstruccion(t_id));
         return "predio";
     }
 }

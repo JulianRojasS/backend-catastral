@@ -13,7 +13,7 @@ public class ric_construccion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer t_id;
     private String t_ili_tid;
-    private String identificado;
+    private String identificador;
     private Integer tipo_construccion;
     private Integer tipo_dominio;
     private Integer numero_pisos;
@@ -36,10 +36,10 @@ public class ric_construccion {
     private String espacio_de_nombres;
     private String local_id;
 
-    public ric_construccion(Integer t_id, String t_ili_tid, String identificado, Integer tipo_construccion, Integer tipo_dominio, Integer numero_pisos, Integer numero_sotanos, Integer numero_mezanines, Integer numero_semisotanos, Integer anio_construccion, Integer avaluo_construccion, Integer area_construccion, Integer altura, String observaciones, String codigo_construccion, String geometria, Integer dimension, String etiqueta, Integer relacion_superficie, Integer nivel, Timestamp comienzo_vida_util_version, Timestamp fin_vida_util_version, String espacio_de_nombres, String local_id) {
+    public ric_construccion(Integer t_id, String t_ili_tid, String identificador, Integer tipo_construccion, Integer tipo_dominio, Integer numero_pisos, Integer numero_sotanos, Integer numero_mezanines, Integer numero_semisotanos, Integer anio_construccion, Integer avaluo_construccion, Integer area_construccion, Integer altura, String observaciones, String codigo_construccion, String geometria, Integer dimension, String etiqueta, Integer relacion_superficie, Integer nivel, Timestamp comienzo_vida_util_version, Timestamp fin_vida_util_version, String espacio_de_nombres, String local_id) {
         this.t_id = t_id;
         this.t_ili_tid = t_ili_tid;
-        this.identificado = identificado;
+        this.identificador = identificador;
         this.tipo_construccion = tipo_construccion;
         this.tipo_dominio = tipo_dominio;
         this.numero_pisos = numero_pisos;
@@ -82,12 +82,12 @@ public class ric_construccion {
         this.t_ili_tid = t_ili_tid;
     }
 
-    public String getIdentificado() {
-        return identificado;
+    public String getidentificador() {
+        return identificador;
     }
 
-    public void setIdentificado(String identificado) {
-        this.identificado = identificado;
+    public void setidentificador(String identificador) {
+        this.identificador = identificador;
     }
 
     public Integer getTipo_construccion() {
@@ -263,7 +263,7 @@ public class ric_construccion {
         return "ric_construccion{" +
                 "t_id=" + t_id +
                 ", t_ili_tid='" + t_ili_tid + '\'' +
-                ", identificado='" + identificado + '\'' +
+                ", identificador='" + identificador + '\'' +
                 ", tipo_construccion=" + tipo_construccion +
                 ", tipo_dominio=" + tipo_dominio +
                 ", numero_pisos=" + numero_pisos +

@@ -17,7 +17,19 @@ public class col_uebaunitService {
         return repository.terrenoPredio(uebaunit);
     }
 
+    public List<Map<String, Object>> unidadConstruccionDetallePredio (Integer uebaunit) {
+        return repository.unidadConstruccionPredio(uebaunit);
+    }
+
     public List<Map<String, Object>> geometriasTerreno (Integer uebanit) {
         return repository.geometriasTerreno(uebanit);
+    }
+
+    public List<Map<String, Object>> geometriasConstruccion (Integer uebanit) {
+        return repository.geometriasContruccion(uebanit);
+    }
+
+    public List<Map<String, Object>> geometriasUnidadConstruccion (Integer uebanit) {
+        return repository.geometriasUnidadContruccion(uebanit);
     }
 }

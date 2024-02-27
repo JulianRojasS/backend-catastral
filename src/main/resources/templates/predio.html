@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Predio</title>
     <link rel="stylesheet" href="/predio.css">
+    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
 </head>
 <body>
@@ -40,7 +41,7 @@
     </section>
     <section>
         <h1>Direccion</h1>
-        <table class="direccion">
+        <table class="direccion vertical-table" >
             <thead>
                 <th>Tipo de dirección</th>
                 <th>Direccion Principal</th>
@@ -80,9 +81,9 @@
         <h2>Derecho</h2>
         <table>
             <thead>
-                <th>Tipo de derecho</th>
-                <th>Fracción del derecho</th>
-                <th>Fecha de documento fuente</th>
+                <th>Tipo de Derecho</th>
+                <th>Fracción del Derecho</th>
+                <th>Fecha de Documento Fuente</th>
                 <th>Descripción</th>
             </thead>
             <tbody>
@@ -97,13 +98,13 @@
         <h2>Fuente Administartiva</h2>
         <table>
             <thead>
-                <th>Tipo de fuente</th>
-                <th>Ente emisor</th>
+                <th>Tipo de Fuente</th>
+                <th>Ente Emisor</th>
                 <th>Observaciónes</th>
-                <th>Numero fuente</th>
-                <th>Estado disponibilidad</th>
-                <th>Tipo principal</th>
-                <th>Fecha de documento fuente</th>
+                <th>Numero Fuente</th>
+                <th>Estado Disponibilidad</th>
+                <th>Tipo Principal</th>
+                <th>Fecha de Documento Fuente</th>
             </thead>
             <tbody>
                 <tr th:each="fuente : ${fuenteadministrativa}">
@@ -119,13 +120,13 @@
         </table>
     </section>
     <section>
-        <h1>Informacion de interesados</h1>
+        <h1>Información de interesados</h1>
         <table>
             <thead>
             <tr>
                 <th>Tipo de Documento</th>
                 <th>Número de Documento</th>
-                <th>Nombre/Razon Social</th>
+                <th>Nombre/Razón Social</th>
                 <th>Participación</th>
                 <th>Ver</th>
             </tr>
@@ -136,31 +137,102 @@
                 <td th:text="${interesado.documento_identidad}"></td>
                 <td th:text="${interesado.nombre}"></td>
                 <td th:text="${interesado.participacion}"></td>
+                <td><button th:onclick="'See_Interesado(\'' + ${interesado.t_id} + '\')'">Ver mas</button></td>
             </tr>
             </tbody>
         </table>
     </section>
     <section>
         <h1>Construcciones</h1>
-    </section>
-    <section>
-        <h1>Unnidades de construcción</h1>
-        <table>
+        <table class="vertical-table">
             <thead>
-                <th>Ubicacion de planta</th>
-                <th>Area Consturida</th>
+                <th>Identificador</th>
+                <th>Tipo Construcción</th>
+                <th>Tipo Dominio</th>
+                <th>Numero Pisos</th>
+                <th>Numero Sotanos</th>
+                <th>Numero Mezanines</th>
+                <th>Numero Semisotanos</th>
+                <th>Anio Construcción</th>
+                <th>Avaluo Construcción</th>
+                <th>Area Construcción</th>
                 <th>Altura</th>
-                <th>Geometria</th>
+                <th>Observaciones</th>
+                <th>Codigo Construcción</th>
+                <th>Dimensión</th>
+                <th>Etiqueta</th>
+                <th>Relación Superficie</th>
+                <th>Nivel</th>
+                <th>Comienzo Vida Util Versión</th>
+                <th>Fin Vida Util Versión</th>
             </thead>
             <tbody>
-                <tr th:each="unidad : ${unidadesC}">
-                    <td th:text="${unidad.getPlanta_ubicacion()}"></td>
-                    <td th:text="${unidad.getArea_construida()}"></td>
-                    <td th:text="${unidad.getAltura()}"></td>
-                    <td th:text="${unidad.getGeometria()}"></td>
+                <tr th:each="construccion : ${contrucciones}">
+                    <td th:text="${construccion.identificador}"></td>
+                    <td th:text="${construccion.tipo_construccion}"></td>
+                    <td th:text="${construccion.tipo_dominio}"></td>
+                    <td th:text="${construccion.numero_pisos}"></td>
+                    <td th:text="${construccion.numero_sotanos}"></td>
+                    <td th:text="${construccion.numero_mezanines}"></td>
+                    <td th:text="${construccion.numero_semisotanos}"></td>
+                    <td th:text="${construccion.anio_construccion}"></td>
+                    <td th:text="${construccion.avaluo_construccion}"></td>
+                    <td th:text="${construccion.area_construccion}"></td>
+                    <td th:text="${construccion.altura}"></td>
+                    <td th:text="${construccion.observaciones}"></td>
+                    <td th:text="${construccion.codigo_construccion}"></td>
+                    <td th:text="${construccion.dimension}"></td>
+                    <td th:text="${construccion.etiqueta}"></td>
+                    <td th:text="${construccion.relacion_superficie}"></td>
+                    <td th:text="${construccion.nivel}"></td>
+                    <td th:text="${construccion.comienzo_vida_util_version}"></td>
+                    <td th:text="${construccion.fin_vida_util_version}"></td>
                 </tr>
             </tbody>
         </table>
+        <div id="construcciones" class="map"></div>
+    </section>
+    <section>
+        <h1>Unnidades de construcción</h1>
+        <table class="vertical-table">
+            <thead>
+                <th>Identificador</th>
+                <th>Tipo Construccion</th>
+                <th>Tipo Dominio</th>
+                <th>Tipo Unidad_construccion</th>
+                <th>Total Habitaciones</th>
+                <th>Total Banios</th>
+                <th>Total Locales</th>
+                <th>total Plantas</th>
+                <th>Uso</th>
+                <th>Anio Construccion</th>
+                <th>Area Construida</th>
+                <th>Area Privada Construida</th>
+                <th>Observaciones</th>
+                <th>Comienzo Vida Util Versión</th>
+                <th>Fin Vida Util Versión</th>
+            </thead>
+            <tbody>
+                <tr th:each="unidad : ${unidadesC}">
+                    <td th:text="${unidad.identificador}"></td>
+                    <td th:text="${unidad.tipo_construccion}"></td>
+                    <td th:text="${unidad.tipo_dominio}"></td>
+                    <td th:text="${unidad.tipo_unidad_construccion}"></td>
+                    <td th:text="${unidad.total_habitaciones}"></td>
+                    <td th:text="${unidad.total_banios}"></td>
+                    <td th:text="${unidad.total_locales}"></td>
+                    <td th:text="${unidad.total_plantas}"></td>
+                    <td th:text="${unidad.uso}"></td>
+                    <td th:text="${unidad.anio_construccion}"></td>
+                    <td th:text="${unidad.area_construida}"></td>
+                    <td th:text="${unidad.area_privada_construida}"></td>
+                    <td th:text="${unidad.observaciones}"></td>
+                    <td th:text="${unidad.comienzo_vida_util_version}"></td>
+                    <td th:text="${unidad.fin_vida_util_version}"></td>
+                </tr>
+            </tbody>
+        </table>
+        <div id="uconstrucciones" class="map"></div>
     </section>
     <section>
         <h1>Terrenos</h1>
@@ -179,36 +251,20 @@
             </tbody>
         </table>
     </section>
-    <div id="map"></div>
+    <div id="terrenos" class="map"></div>
+    <div id="modal">
+        <span id="bg-modal"><button id="close-modal">x</button></span>
+
+        <div id="modal-body">
+        </div>
+    </div>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script src="https://unpkg.com/wkx@0.5.0/dist/wkx.min.js"></script>
     <script th:inline="javascript">
-        var coordenadasConsulta = /*[[${geometriasT}]]*/ '';
-
-        function convertirCoordenadas(consulta) {
-            var coordsString = consulta.replace("MULTIPOLYGON Z (((", "").replace(")))", "");
-            var coords = coordsString.split(",").map(function(point) {
-                var coordsZ = point.trim().split(" ").map(parseFloat);
-                return [coordsZ[1], coordsZ[0]];
-            });
-            return coords;
-        }
-
-        var map = L.map('map');
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
-
-        coordenadasConsulta.forEach(function(coordenadas) {
-            var coordsLeaflet = convertirCoordenadas(coordenadas.geometria);
-            var polygon = L.polygon(coordsLeaflet).addTo(map);
-
-            // Obtener los límites del polígono
-            var bounds = polygon.getBounds();
-
-            // Ajustar el centro del mapa y el zoom para que los polígonos sean visibles
-            map.fitBounds(bounds);
-        });
+        var geometriasTerrenos = /*[[${geometriasT}]]*/ '';
+        var coordenadasConstruccion = /*[[${geometriasC}]]*/ '';
+        var coordenadasUnidadConstruccion = /*[[${geometriasUC}]]*/ '';
     </script>
+    <script th:src="@{/predio.js}"></script>
 </body>
 </html>

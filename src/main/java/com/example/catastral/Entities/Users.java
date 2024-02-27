@@ -15,7 +15,8 @@ public class Users {
     private String contrasenia;
     private String rol;
 
-    public Users(String nombre, String email, String contrasenia, String rol) {
+    public Users(Integer id, String nombre, String email, String contrasenia, String rol) {
+        this.id = id;
         this.nombre = nombre;
         this.email = email;
         this.contrasenia = contrasenia;
