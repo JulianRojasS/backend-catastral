@@ -1,9 +1,10 @@
 package com.example.catastral.Services;
 
-import com.example.catastral.Entities.extdireccion;
+import com.example.catastral.Entities.Extdireccion;
 import com.example.catastral.Repositories.extdireccionRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -15,7 +16,21 @@ public class extdireccionService {
         this.repository = repository;
     }
 
-    public List<Map<String, Object>> direccionPorPredio (Integer t_id) {
-        return repository.direccionPredio(t_id);
+    public ArrayList<Extdireccion> todo () {
+        return (ArrayList<Extdireccion>) repository.findAll();
+    }
+
+    public Extdireccion extdireccion (Integer t_id) {
+        return repository.findById(t_id).get();
+    }
+    public ArrayList<Extdireccion> direccionPredio (Integer t_id) {
+        ArrayList<Extdireccion> direcciones = this.todo();
+        ArrayList<Extdireccion> response = new ArrayList<Extdireccion>();
+        for (Extdireccion direccion : direcciones) {
+            if (direccion.getRic_predio().getT_id().equals(t_id) && direccion != null) {
+                response.add(direccion);
+            }
+        }
+        return response;
     }
 }

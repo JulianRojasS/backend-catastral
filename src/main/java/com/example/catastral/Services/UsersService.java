@@ -1,26 +1,32 @@
 package com.example.catastral.Services;
 
-import com.example.catastral.Repositories.UsersRepository;
 import com.example.catastral.Entities.Users;
+import com.example.catastral.Repositories.usersRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
-public class UsersService {
-    private UsersRepository repository;
-    public UsersService(UsersRepository repository) {
+public class usersService {
+    private usersRepository repository;
+
+    public usersService (usersRepository repository){
         this.repository = repository;
     }
 
-    public ArrayList<Users> AllUsers () {
+    public ArrayList<Users> todo () {
         return (ArrayList<Users>) repository.findAll();
     }
 
+    public Users users (Integer t_id) {
+        return repository.findById(t_id).get();
+    }
+
     public Users UserByEmail (String email) {
-        ArrayList<Users> usuarios = this.AllUsers();
+        ArrayList<Users> usuarios = this.todo();
         Users usuario = new Users();
         boolean isIn = false;
         for (Users us : usuarios) {
@@ -65,5 +71,4 @@ public class UsersService {
 
         return false;
     }
-
 }

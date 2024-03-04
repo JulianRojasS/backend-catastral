@@ -33,7 +33,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(uconstrucciones);
 
 geometriasTerrenos.forEach(function(coordenadas) {
-    var coordsLeaflet = convertirCoordenadas(coordenadas.geometria);
+    var coordsLeaflet = convertirCoordenadas(coordenadas);
     var polygon = L.polygon(coordsLeaflet).addTo(terrenos);
 
     // Obtener los límites del polígono
@@ -44,7 +44,7 @@ geometriasTerrenos.forEach(function(coordenadas) {
 });
 
 coordenadasConstruccion.forEach(function(coordenadas) {
-    var coordsLeaflet = convertirCoordenadas(coordenadas.geometria);
+    var coordsLeaflet = convertirCoordenadas(coordenadas);
     var polygon = L.polygon(coordsLeaflet).addTo(construcciones);
 
     // Obtener los límites del polígono
@@ -55,7 +55,7 @@ coordenadasConstruccion.forEach(function(coordenadas) {
 });
 
 coordenadasUnidadConstruccion.forEach(function(coordenadas) {
-    var coordsLeaflet = convertirCoordenadas(coordenadas.geometria);
+    var coordsLeaflet = convertirCoordenadas(coordenadas);
     var polygon = L.polygon(coordsLeaflet).addTo(uconstrucciones);
 
     // Obtener los límites del polígono

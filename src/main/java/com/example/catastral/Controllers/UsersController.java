@@ -1,7 +1,7 @@
 package com.example.catastral.Controllers;
 
 import com.example.catastral.Entities.Users;
-import com.example.catastral.Services.UsersService;
+import com.example.catastral.Services.usersService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -9,21 +9,21 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
-public class UsersController {
-    private UsersService service;
+public class usersController {
+    private usersService service;
 
-    public UsersController (UsersService service) {
+    public usersController (usersService service) {
         this.service = service;
     }
 
     @GetMapping(path = "/users")
     public ArrayList<Users> listar() {
-        return service.AllUsers();
+        return service.todo();
     }
 
     @GetMapping(path = "/usaurio")
     public List<String> getEmailsAndPasswords() {
-        List<Users> usersList = service.AllUsers();
+        List<Users> usersList = service.todo();
         List<String> emailsAndPasswords = new ArrayList<>();
 
         for (Users user : usersList) {
