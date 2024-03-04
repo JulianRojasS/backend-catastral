@@ -1,30 +1,41 @@
 package com.example.catastral.Services;
 
-import java.util.List;
-import java.util.Map;
-
-import com.example.catastral.Entities.ric_interesado;
+import com.example.catastral.Entities.Ric_interesado;
 import com.example.catastral.Repositories.ric_interesadoRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 @Service
 public class ric_interesadoService {
     private ric_interesadoRepository repository;
 
-    public ric_interesadoService(ric_interesadoRepository repository) {
+    public ric_interesadoService (ric_interesadoRepository repository){
         this.repository = repository;
     }
 
-    public List<ric_interesado> interesadoByLike (String column, String value) {
-        String uppervalue = value.toUpperCase();
-        return repository.buscarPorValor(column, uppervalue);
+    public ArrayList<Ric_interesado> todo () {
+        return (ArrayList<Ric_interesado>) repository.findAll();
     }
 
-    public List<Map<String, Object>> interesadosByDocument (Integer t_id) {
-        return repository.detalleConsulta(t_id);
+    public Ric_interesado ric_interesado (Integer t_id) {
+        return repository.findById(t_id).get();
     }
 
     public List<Map<String, Object>> predioDetalle (Integer t_id) {
         return repository.detalleConsultaPredio(t_id);
+    }
+
+    public ArrayList<Ric_interesado> interesadoByLike (String column, String value) {
+        String uppervalue = "%"+ value.toUpperCase() +"%";
+        if (column.equals("nombre")) {
+            return repository.buscarPorNombre(uppervalue);
+        } else if (column.equals("documento_identidad")) {
+            return repository.buscarPorDI(uppervalue);
+        } else {
+            return new ArrayList<Ric_interesado>();
+        }
     }
 }

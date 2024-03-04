@@ -1,24 +1,20 @@
 package com.example.catastral.Repositories;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
+import com.example.catastral.Entities.Col_uebaunit;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-import java.util.Map;
-
 @Repository
-public class col_uebaunitRepository {
-    @Autowired
-    private JdbcTemplate jdbcTemplate;
+public interface col_uebaunitRepository extends CrudRepository<Col_uebaunit, Integer> {
+    @Query(value = "select ST_AsText(ST_Transform(rt.geometria, 4326)) from ric_terreno rt where rt.t_id = :t_id", nativeQuery = true)
+    String convertirCoordenadasTerreno(@Param("t_id") Integer t_id);
 
-    public List<Map<String, Object>> terrenoPredio (Integer baunit) {
-        String sql = "select cu.ue_ric_terreno, rt.area_terreno from ric.col_uebaunit cu inner join ric_terreno rt on rt.t_id = ue_ric_terreno where baunit = ?";
-        return jdbcTemplate.queryForList(sql, new Object[]{baunit});
-    }
+    @Query(value = "select ST_AsText(ST_Transform(ru.geometria, 4326)) from ric_unidadconstruccion ru where ru.t_id = :t_id", nativeQuery = true)
+    String convertirCoordenadasUnidadConstruccion(@Param("t_id") Integer t_id);
 
-    public List<Map<String, Object>> geometriasTerreno (Integer baunit) {
-        String sql = "select ST_AsText(ST_Transform(rt.geometria, 4326)) as geometria  from ric.col_uebaunit cu inner join ric_terreno rt on rt.t_id = ue_ric_terreno where baunit = ?";
-        return jdbcTemplate.queryForList(sql, new Object[]{baunit});
-    }
+    @Query(value = "select ST_AsText(ST_Transform(rc.geometria, 4326)) from ric_construccion rc where rc.t_id = :t_id", nativeQuery = true)
+    String convertirCoordenadasContruccion(@Param("t_id") Integer t_id);
+
 }

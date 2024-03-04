@@ -1,7 +1,7 @@
 package com.example.catastral.Controllers;
 
 import com.example.catastral.Entities.Users;
-import com.example.catastral.Services.UsersService;
+import com.example.catastral.Services.usersService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -9,21 +9,21 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
-public class UsersController {
-    private UsersService service;
+public class usersController {
+    private usersService service;
 
-    public UsersController (UsersService service) {
+    public usersController (usersService service) {
         this.service = service;
     }
 
     @GetMapping(path = "/users")
     public ArrayList<Users> listar() {
-        return service.AllUsers();
+        return service.todo();
     }
 
     @GetMapping(path = "/usaurio")
     public List<String> getEmailsAndPasswords() {
-        List<Users> usersList = service.AllUsers();
+        List<Users> usersList = service.todo();
         List<String> emailsAndPasswords = new ArrayList<>();
 
         for (Users user : usersList) {
@@ -36,21 +36,19 @@ public class UsersController {
         return emailsAndPasswords;
     }
 
-    @PostMapping("/login")
-    public String login(@RequestParam("correo") String correo, @RequestParam("password") String password) {
-
-        List<Users> usersList = service.AllUsers();
-        for (Users user : usersList) {
-            if (user.getEmail().equals(correo) && user.getContrasenia().equals(password)) {
-                return "<script>window.location.href = 'http://127.0.0.1:5500/src/views/consultas.html';</script>";
-            }
-        }
-        return "<script>window.location.href = 'http://127.0.0.1:5500/login.html';</script>";
+    @GetMapping(path = "/User/{email}")
+    public Users User (@PathVariable("email") String email) {
+        return service.UserByEmail(email);
     }
 
+    @PostMapping("/login")
+    public Boolean login(@RequestParam("email") String email, @RequestParam("password") String password) {
+        return service.Login(email, password);
+    }
 
-
-
-
+    @PutMapping("/actualizarUsuario/{id}")
+    public Boolean actualizar (@PathVariable("id") Integer id, Users u) {
+        return service.Actualizar(id, u);
+    }
 
 }

@@ -1,21 +1,24 @@
 package com.example.catastral.Entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "users")
 public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column(nullable = false, length = 100)
     private String nombre;
+    @Column(nullable = false, length = 100)
     private String email;
+    @Column(nullable = false, length = 100)
     private String contrasenia;
+    @Column(nullable = false, length = 50)
     private String rol;
 
-    public Users(String nombre, String email, String contrasenia, String rol) {
+    public Users(Integer id, String nombre, String email, String contrasenia, String rol) {
+        this.id = id;
         this.nombre = nombre;
         this.email = email;
         this.contrasenia = contrasenia;
