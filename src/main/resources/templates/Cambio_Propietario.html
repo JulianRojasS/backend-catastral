@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cambio</title>
+    <link rel="stylesheet" href="/predio.css">
+</head>
+<body>
+<section>
+  <h1>Informacion de interesados</h1>
+  <table>
+    <thead>
+    <tr>
+      <th>Tipo de Documento</th>
+      <th>Número de Documento</th>
+      <th>Nombre/Razon Social</th>
+      <th>Participación</th>
+      <th>Ver</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="interesado : ${interesados}">
+      <td th:text="${interesado.tipo_documento}"></td>
+      <td th:text="${interesado.documento_identidad}"></td>
+      <td th:text="${interesado.nombre}"></td>
+      <td th:text="${interesado.participacion}"></td>
+    </tr>
+    </tbody>
+  </table>
+</section>
+</body>
+</html>
