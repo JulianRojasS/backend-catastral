@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 
 import java.util.Set;
 @Entity
-@Table(name = "gm_multicurve2d")
+@Table(name = "gm_multicurve2d", schema = "ric")
 public class Gm_multicurve2d {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

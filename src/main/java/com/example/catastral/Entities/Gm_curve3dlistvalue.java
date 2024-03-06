@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 @Entity
-@Table(name = "gm_curve3dlistvalue")
+@Table(name = "gm_curve3dlistvalue", schema = "ric")
 public class Gm_curve3dlistvalue {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

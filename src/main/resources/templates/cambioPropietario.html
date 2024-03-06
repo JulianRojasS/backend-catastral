@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Predio</title>
+    <link rel="stylesheet" href="/predio.css">
+    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+</head>
+<body>
+<section>
+    <h1>Información de interesados</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>Tipo de Documento</th>
+            <th>Número de Documento</th>
+            <th>Nombre/Razón Social</th>
+            <th>Participación</th>
+            <th>Ver</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="interesado : ${interesados}">
+            <td th:text="${(interesado.tipo_documento == null) ? 'null' : interesado.tipo_documento}"></td>
+            <td th:text="${(interesado.documento_identidad == null) ? 'null' : interesado.documento_identidad}"></td>
+            <td th:text="${(interesado.nombre == null) ? 'null' : interesado.nombre}"></td>
+            <td th:text="${(interesado.participacion == null) ? 'null' : interesado.participacion}"></td>
+            <td><button th:onclick="'See_Interesado(\'' + ${interesado.t_id} + '\')'">Ver mas</button></td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+<div id="terrenos" class="map"></div>
+<div id="modal">
+    <span id="bg-modal"><button id="close-modal">x</button></span>
+
+    <div id="modal-body">
+    </div>
+</div>
+</body>
+</html>

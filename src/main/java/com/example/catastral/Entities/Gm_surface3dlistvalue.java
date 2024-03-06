@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.Column;
 import jakarta.persistence.*;
 @Entity
-@Table(name = "Gm_surface3dlistvalue")
+@Table(name = "Gm_surface3dlistvalue", schema = "ric")
 public class Gm_surface3dlistvalue {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

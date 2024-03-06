@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 
 import java.util.Set;
 @Entity
-@Table(name = "ric_construcciontipo")
+@Table(name = "ric_construcciontipo", schema = "ric")
 public class Ric_construcciontipo {
     @JsonManagedReference
     @Id

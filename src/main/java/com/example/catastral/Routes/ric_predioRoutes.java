@@ -44,10 +44,9 @@ public class ric_predioRoutes {
         return "predio";
     }
 
-    @GetMapping("/CP/{t_id}")
-    public String CambioPropietario (@PathVariable("t_id")Integer t_id,Model model){
+    @GetMapping("/cambioPropietario/{t_id}")
+    public String cambioPropietarioPredio (@PathVariable("t_id") Integer t_id, Model model ) {
         model.addAttribute("interesados", ricInteresadoService.predioDetalle(t_id));
-        return "Cambio_Propietario";
+        return "cambioPropietario";
     }
-
 }
