@@ -126,3 +126,20 @@ function See_Interesado (t_id) {
         }
     })
 }
+function showSection(sectionId) {
+    // Ocultar todas las secciones
+    var sections = document.querySelectorAll('section');
+    sections.forEach(function(section) {
+        section.style.display = 'none';
+    });
+
+    // Quitar la clase 'active' de todos los botones
+    var buttons = document.querySelectorAll('#sidebar ul li');
+    buttons.forEach(function(button) {
+        button.classList.remove('active');
+    });
+
+    // Mostrar la sección correspondiente y resaltar el botón
+    document.getElementById(sectionId).style.display = 'block';
+    document.getElementById(sectionId + 'Btn').classList.add('active');
+}
