@@ -133,7 +133,7 @@
             </thead>
             <tbody>
             <tr th:each="interesado : ${interesados}">
-                <td th:text="${(interesado.tipo_documento == null) ? 'null' : interesado.tipo_documento}"></td>
+                <td th:text="${(interesado.dispname == null) ? 'null' : interesado.dispname}"></td>
                 <td th:text="${(interesado.documento_identidad == null) ? 'null' : interesado.documento_identidad}"></td>
                 <td th:text="${(interesado.nombre == null) ? 'null' : interesado.nombre}"></td>
                 <td th:text="${(interesado.participacion == null) ? 'null' : interesado.participacion}"></td>

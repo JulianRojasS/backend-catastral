@@ -8,7 +8,7 @@ import jakarta.persistence.*;
 import java.util.UUID;
 
 @Entity
-@Table(name = "ric_datosphcondominio")
+@Table(name = "ric_datosphcondominio", schema = "ric")
 public class Ric_datosphcondominio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

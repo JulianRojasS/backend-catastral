@@ -8,7 +8,7 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "extarchivo")
+@Table(name = "extarchivo", schema = "ric")
 public class Extarchivo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

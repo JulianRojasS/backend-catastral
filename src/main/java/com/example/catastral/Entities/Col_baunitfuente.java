@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "col_baunitfuente")
+@Table(name = "col_baunitfuente", schema = "ric")
 public class Col_baunitfuente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

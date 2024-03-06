@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -30,5 +31,10 @@ public class ric_interesadoController {
     @PostMapping(path = "/interesadosByLike/{column}/{value}")
     public ArrayList<Ric_interesado> listByLike (@PathVariable("column") String column, @PathVariable("value") String value) {
         return service.interesadoByLike(column, value);
+    }
+
+    @PostMapping(path = "/interesadosPredio/{t_id}")
+    public List<Map<String, Object>> interesadosPredio (@PathVariable("t_id") Integer t_id) {
+        return service.predioDetalle(t_id);
     }
 }

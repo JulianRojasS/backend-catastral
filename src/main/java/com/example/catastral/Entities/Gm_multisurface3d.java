@@ -8,7 +8,7 @@ import jakarta.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "gm_multisurface3d")
+@Table(name = "gm_multisurface3d", schema = "ric")
 public class Gm_multisurface3d {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

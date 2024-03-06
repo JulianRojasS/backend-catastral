@@ -22,7 +22,7 @@ def crearArchivos():
 def editar (nombre):
     with open (f'Entities/{nombre}.java', 'r') as archivo_leer:
         archivo = archivo_leer.read()
-        nuevo = archivo.replace("@JsonBackReference", "@JsonManagedReference").replace("@JsonManagedReference\n    private Set<", "@JsonBackReference\n    private Set<")
+        nuevo = archivo.replace(')\npublic class', ', schema = "ric")\npublic class')
         with open (f'Entities/{nombre}.java', 'w') as archivo_editar:
             archivo_editar.write(nuevo)
 

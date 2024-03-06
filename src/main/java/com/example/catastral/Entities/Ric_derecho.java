@@ -12,7 +12,7 @@ import java.util.Set;
 import java.util.UUID;
 
 @Entity
-@Table(name = "ric_derecho")
+@Table(name = "ric_derecho", schema = "ric")
 public class Ric_derecho {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

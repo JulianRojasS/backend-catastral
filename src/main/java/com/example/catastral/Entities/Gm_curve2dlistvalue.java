@@ -3,7 +3,7 @@ package com.example.catastral.Entities;
 import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 @Entity
-@Table(name = "gm_curve2distvalue")
+@Table(name = "gm_curve2distvalue", schema = "ric")
 public class Gm_curve2dlistvalue {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
