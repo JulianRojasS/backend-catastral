@@ -67,78 +67,53 @@
     <section id="direccion">
         <div class="container">
             <h1>Dirección</h1>
-            <div class="table-responsive">
-                <table class="table table-sm table-bordered">
-                    <thead class="thead-dark">
-                    <tr>
-                        <th scope="col">Campo</th>
-                        <th scope="col">Información</th>
-                    </tr>
-                    </thead>
-                    <tbody class=" tbody">
-                    <tr>
-                        <th scope="row">Tipo de dirección</th>
-                        <td><input id="tipo_direccion" th:value="${(dir.extdireccion_tipo_direccion == null) ? 'null' : dir.extdireccion_tipo_direccion.dispname}" disabled></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Dirección Principal</th>
-                        <td>
-                            <label class="custom-checkbox">
-                                <td><input id="es_direccion_principal" type="checkbox" th:checked="${(dir.es_direccion_principal == null) ? 'null' : dir.es_direccion_principal}" disabled></td>
-                                <span class="checkmark"></span>
-                            </label>
-                        </td>
+            <tbody class=" tbody">
+            <tr th:each="dir : ${direccion}">
+                <th scope="row">Tipo de dirección</th>
+                <td><input id="tipo_direccion" th:value="${(dir.extdireccion_tipo_direccion == null) ? 'null' : dir.extdireccion_tipo_direccion.dispname}" disabled></td>
 
-                    </tr>
-                    <tr>
-                        <th scope="row">Código Postal</th>
-                        <td><input id="codigo_postal" th:value="${(dir.codigo_postal == null) ? 'null' : dir.codigo_postal}" disabled></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Clase Via Principal</th>
-                        <td><input id="clase_via_principal" th:value="${(dir.extdireccion_clase_via_principal == null) ? 'null' : dir.extdireccion_clase_via_principal.dispname}" disabled></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Valor Via Principal</th>
-                        <td><input id="valor_via_principal" th:value="${(dir.valor_via_principal == null) ? 'null' : dir.valor_via_principal}" disabled></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Letra Via Principal</th>
-                        <td><input id="letra_via_principal" th:value="${(dir.letra_via_principal == null) ? 'null' : dir.letra_via_principal}" disabled></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Sector Ciudad</th>
-                        <td><input id="sector_ciudad" th:value="${ (dir.extdireccion_sector_ciudad == null) ? 'null' : dir.extdireccion_sector_ciudad.dispname}" disabled></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Valor Via Generadora</th>
-                        <td><input id="valor_via_generadora" th:value="${(dir.valor_via_generadora == null) ? 'null' : dir.valor_via_generadora}" disabled></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Letra Via Generadora</th>
-                        <td><input id="letra_via_generadora" th:value="${(dir.letra_via_generadora == null) ? 'null' : dir.letra_via_generadora}" disabled></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Número Predio</th>
-                        <td><input id="numero_predio" th:value="${(dir.numero_predio == null) ? 'null' : dir.numero_predio}" disabled></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Sector Predio</th>
-                        <td><input id="sector_predio" th:value="${ (dir.extdireccion_sector_predio == null) ? 'null' : dir.extdireccion_sector_predio.dispname}" disabled></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Complemento</th>
-                        <td><input id="complemento" th:value="${(dir.complemento == null) ? 'null' : dir.complemento}" disabled></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Nombre Predio</th>
-                        <td><input id="nombre_predio" th:value="${(dir.nombre_predio == null) ? 'null' : dir.nombre_predio}" disabled></td>
-                    </tr>
+                <th scope="row">Dirección Principal</th>
+                <td>
+                    <label class="custom-checkbox">
+                        <td><input id="es_direccion_principal" type="checkbox" th:checked="${(dir.es_direccion_principal == null) ? 'null' : dir.es_direccion_principal}" disabled></td>
+                        <span class="checkmark"></span>
+                    </label>
+                </td>
 
-                    <!-- Repite las filas para los demás campos -->
-                    </tbody>
-                </table>
-            </div>
+                <th scope="row">Código Postal</th>
+                <td><input id="codigo_postal" th:value="${(dir.codigo_postal == null) ? 'null' : dir.codigo_postal}" disabled></td>
+
+                <th scope="row">Clase Via Principal</th>
+                <td><input id="clase_via_principal" th:value="${(dir.extdireccion_clase_via_principal == null) ? 'null' : dir.extdireccion_clase_via_principal.dispname}" disabled></td>
+
+                <th scope="row">Valor Via Principal</th>
+                <td><input id="valor_via_principal" th:value="${(dir.valor_via_principal == null) ? 'null' : dir.valor_via_principal}" disabled></td>
+
+                <th scope="row">Letra Via Principal</th>
+                <td><input id="letra_via_principal" th:value="${(dir.letra_via_principal == null) ? 'null' : dir.letra_via_principal}" disabled></td>
+
+                <th scope="row">Sector Ciudad</th>
+                <td><input id="sector_ciudad" th:value="${ (dir.extdireccion_sector_ciudad == null) ? 'null' : dir.extdireccion_sector_ciudad.dispname}" disabled></td>
+
+                <th scope="row">Valor Via Generadora</th>
+                <td><input id="valor_via_generadora" th:value="${(dir.valor_via_generadora == null) ? 'null' : dir.valor_via_generadora}" disabled></td>
+
+                <th scope="row">Letra Via Generadora</th>
+                <td><input id="letra_via_generadora" th:value="${(dir.letra_via_generadora == null) ? 'null' : dir.letra_via_generadora}" disabled></td>
+
+                <th scope="row">Número Predio</th>
+                <td><input id="numero_predio" th:value="${(dir.numero_predio == null) ? 'null' : dir.numero_predio}" disabled></td>
+
+                <th scope="row">Sector Predio</th>
+                <td><input id="sector_predio" th:value="${ (dir.extdireccion_sector_predio == null) ? 'null' : dir.extdireccion_sector_predio.dispname}" disabled></td>
+
+                <th scope="row">Complemento</th>
+                <td><input id="complemento" th:value="${(dir.complemento == null) ? 'null' : dir.complemento}" disabled></td>
+
+                <th scope="row">Nombre Predio</th>
+                <td><input id="nombre_predio" th:value="${(dir.nombre_predio == null) ? 'null' : dir.nombre_predio}" disabled></td>
+            </tr>
+            </tbody>
         </div>
     </section>
     <section id="infoJuridica">
