@@ -285,13 +285,11 @@
             <thead>
             <th>Manzana/Vereda</th>
             <th>Area</th>
-            <th>Geometria</th>
             </thead>
             <tbody>
             <tr th:each="terreno : ${terrenos}">
                 <td th:text="${(predio.numero_predial == null) ? 'null' : predio.numero_predial.substring(0,17)}"></td>
                 <td th:text="${(terreno.area_terreno == null) ? 'null' : terreno.area_terreno}"></td>
-
             </tr>
             </tbody>
         </table>
@@ -307,10 +305,10 @@
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script src="https://unpkg.com/wkx@0.5.0/dist/wkx.min.js"></script>
     <script th:inline="javascript">
-        var geometriasTerrenos = /[[${geometriasT}]]/ '';
-        var coordenadasConstruccion = /[[${geometriasC}]]/ '';
-        var coordenadasUnidadConstruccion = /[[${geometriasUC}]]/ '';
-        </script>
+        var geometriasTerrenos = /*[[${geometriasT}]]*/ '';
+        var coordenadasConstruccion = /*[[${geometriasC}]]*/ '';
+        var coordenadasUnidadConstruccion = /*[[${geometriasUC}]]*/ '';
+    </script>
     <script th:src="@{/predio.js}"></script>
 </div>
 </body>

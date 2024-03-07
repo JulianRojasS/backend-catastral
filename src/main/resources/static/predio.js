@@ -71,18 +71,18 @@ function See_Interesado (t_id) {
     document.getElementById("modal").style.display = "block"
     document.body.style.overflow = "hidden"
     $.ajax({
-        url: `http://localhost:3000/interesadosDetalleConsulta/${t_id}`,
+        url: `http://localhost:3000/ric_interesado/${t_id}`,
         type: "POST",
         datatype: "JSON",
         success: (res) => {
             const nombre = document.createElement("h2")
-            nombre.innerText = `Nombre: ${res[0].nombre}`
+            nombre.innerText = `Nombre: ${res.nombre}`
             modal.appendChild(nombre)
             const tipodocumento = document.createElement("p")
-            tipodocumento.innerText = `Tipo de documento: ${res[0].dispname}`
+            tipodocumento.innerText = `Tipo de documento: ${res.ric_interesadodocumentotipo.dispname}`
             modal.appendChild(tipodocumento)
             const dociden = document.createElement ("p")
-            dociden.innerText = `Número de documento: ${res[0].documento_identidad}`
+            dociden.innerText = `Número de documento: ${res.documento_identidad}`
             modal.appendChild(dociden)
             const scroll_table_modal = document.createElement("div")
             scroll_table_modal.className = "scrool-table-modal"
