@@ -37,4 +37,10 @@ public class ric_interesadoController {
     public List<Map<String, Object>> interesadosPredio (@PathVariable("t_id") Integer t_id) {
         return service.predioDetalle(t_id);
     }
+    @PostMapping(path = "/interesadoPorDocumento/{documento}")
+    public Ric_interesado interesadoDocumento (@PathVariable("documento") String documento) {
+        return service.interesadoDocumento(documento);
+    }
+
+
 }

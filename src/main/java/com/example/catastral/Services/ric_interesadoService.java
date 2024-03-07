@@ -38,4 +38,15 @@ public class ric_interesadoService {
             return new ArrayList<Ric_interesado>();
         }
     }
+
+    public Ric_interesado interesadoDocumento (String documento) {
+        ArrayList<Ric_interesado> interesados = this.todo();
+        Ric_interesado response = new Ric_interesado();
+        for (Ric_interesado interesado : interesados) {
+            if (interesado.getDocumento_identidad().equals(documento)) {
+                response = interesado;
+            }
+        }
+        return response;
+    }
 }
