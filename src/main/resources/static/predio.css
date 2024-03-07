@@ -251,3 +251,9 @@ table {
     margin-left: 95%;
     border: 1px solid;
 }
+
+.scrool-table-modal {
+    max-height: 250px;
+    overflow: auto;
+    margin: 10px auto 50px;
+}
