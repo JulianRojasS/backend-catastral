@@ -2,7 +2,7 @@ package com.example.catastral.Entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -19,7 +19,6 @@ public class Ric_fuenteespacial {
     private UUID t_ili_id;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "tipo", referencedColumnName = "t_id", nullable = false)
-    @JsonManagedReference
     private Col_fuenteespacialtipo col_fuenteespacialtipo;
     @Column(nullable = true)
     private String metadato;
@@ -29,11 +28,9 @@ public class Ric_fuenteespacial {
     private String descripcion;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "estado_disponibilidad", referencedColumnName = "t_id", nullable = false)
-    @JsonManagedReference
     private Col_estadodisponibilidadtipo col_estadodisponibilidadtipo;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "tipo_principal", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Ci_forma_presentacion_codigo ci_forma_presentacion_codigo;
     @Temporal(TemporalType.DATE)
     private Date fecha_documento_fuente;
@@ -43,28 +40,28 @@ public class Ric_fuenteespacial {
     private String local_id;
 
     @OneToMany(mappedBy = "ric_fuenteespacial", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Col_baunitfuente> colbaunitfuente;
     @OneToMany(mappedBy = "ric_fuenteespacial", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Extarchivo> extarchivo ;
     @OneToMany(mappedBy = "ric_fuenteespacial", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Col_topografofuente> coltopografofuente;
     @OneToMany(mappedBy = "ric_fuenteespacial", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Col_puntofuente> colpuntofuete;
     @OneToMany(mappedBy = "ric_fuenteespacial", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Col_clfuente> colclfuente;
     @OneToMany(mappedBy = "ric_fuenteespacial", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Col_cclfuente> colcclfuente;
     @OneToMany(mappedBy = "ric_fuenteespacial", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Col_relacionfuenteuespacial> colrelacionfuenteuespacial;
     @OneToMany(mappedBy = "ric_fuenteespacial", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Col_uefuente> coluefuente;
 
     public Ric_fuenteespacial(Integer t_id, UUID t_ili_id, Col_fuenteespacialtipo col_fuenteespacialtipo, String metadato, String nombre, String descripcion, Col_estadodisponibilidadtipo col_estadodisponibilidadtipo, Ci_forma_presentacion_codigo ci_forma_presentacion_codigo, Date fecha_documento_fuente, String espacio_de_nombres, String local_id) {

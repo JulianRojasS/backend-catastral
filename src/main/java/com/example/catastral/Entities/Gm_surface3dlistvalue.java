@@ -2,7 +2,7 @@ package com.example.catastral.Entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.*;
 @Entity
@@ -17,7 +17,6 @@ public class Gm_surface3dlistvalue {
     private String avalue;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "gm_multisurface3d_geometry", referencedColumnName = "t_id", nullable = false)
-    @JsonManagedReference
     private Gm_multisurface3d gm_multisurface3d;
 
     public Gm_surface3dlistvalue(Integer t_id, Integer s_eq, String avalue, Gm_multisurface3d gm_multisurface3d) {

@@ -2,7 +2,7 @@ package com.example.catastral.Entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.sql.Timestamp;
@@ -27,24 +27,19 @@ public class Ric_unidadconstruccion {
     private String geometria;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "ric_caracteristicasunidadconstruccion", referencedColumnName = "t_id", nullable = false)
-    @JsonManagedReference
     private Ric_caracteristicasunidadconstruccion ric_caracteristicasunidadconstruccion;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "ric_construccion", referencedColumnName = "t_id", nullable = false)
-    @JsonManagedReference
     private Ric_construccion ric_construccion;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "dimension", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Col_dimensiontipo col_dimensiontipo;
     private String etiqueta;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "relacion_superficie", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Col_relacionsuperficietipo col_relacionsuperficietipo;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "nivel", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Ric_nu_nivel ric_nu_nivel;
     @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = false)
@@ -57,37 +52,37 @@ public class Ric_unidadconstruccion {
     private String local_id;
 
     @OneToMany(mappedBy = "ric_unidadconstruccion", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Ric_nu_punto> ricnupunto;
     @OneToMany(mappedBy = "ric_unidadconstruccion", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Col_ueuegrupo> colueuegrupo;
     @OneToMany(mappedBy = "ric_unidadconstruccion", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Col_mascl> colmascl ;
     @OneToMany(mappedBy = "ric_unidadconstruccion", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Col_masccl> colmasccl;
     @OneToMany(mappedBy = "ric_unidadconstruccion", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Col_uebaunit> coluebaunit;
     @OneToMany(mappedBy = "ric_unidadconstruccion", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Col_menoscl> colmenoscl;
     @OneToMany(mappedBy = "ric_unidadconstruccion", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Col_uefuente> coluefuente;
     @OneToMany(mappedBy = "ric_unidadconstruccion", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Extdireccion> extdireccion;
     @OneToMany(mappedBy = "ric_unidadconstruccion", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Col_menosccl> colmenosccl;
     @OneToMany(mappedBy = "ric_unidadconstruccion", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Col_volumenvalor> colvolumenvalor ;
     @OneToMany(mappedBy = "ric_unidadconstruccion", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Col_areavalor> colareavalor;
 
     public Ric_unidadconstruccion(Integer t_id, UUID t_ili_tid, Integer planta_ubicacion, Float area_construida, Integer altura, String geometria, Ric_caracteristicasunidadconstruccion ric_caracteristicasunidadconstruccion, Ric_construccion ric_construccion, Col_dimensiontipo col_dimensiontipo, String etiqueta, Col_relacionsuperficietipo col_relacionsuperficietipo, Ric_nu_nivel ric_nu_nivel, Timestamp comienzo_vida_util_version, Timestamp fin_vida_util_version, String espacio_de_nombres, String local_id) {

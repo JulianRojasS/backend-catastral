@@ -12,7 +12,6 @@ public class Gm_curve2dlistvalue {
     private String avalue;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "gm_multicurve2d_geometry", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Gm_multicurve2d gm_multicurve2d;
 
     public Gm_curve2dlistvalue(Integer t_id, String avalue, Gm_multicurve2d gm_multicurve2d) {

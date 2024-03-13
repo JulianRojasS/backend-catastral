@@ -2,7 +2,7 @@ package com.example.catastral.Entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -21,7 +21,6 @@ public class Cc_metodooperacion {
     private Integer dimensiones_objetivo;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "col_transformacion_transformacion", referencedColumnName = "t_id", nullable = false)
-    @JsonManagedReference
     private Col_transformacion col_transformacion;
 
     public Cc_metodooperacion(Integer t_id, Integer t_seq, String formula, Integer dimensiones_origen, Integer dimensiones_objetivo, Col_transformacion col_transformacion) {

@@ -23,4 +23,17 @@ public class ric_agrupacioninteresadosService {
     public Ric_agrupacioninteresados ric_agrupacioninteresados (Integer t_id) {
         return repository.findById(t_id).get();
     }
+    public Ric_agrupacioninteresados ric_agrupacioninteresadosInsertar (Ric_agrupacioninteresados ric_agrupacioninteresados) {
+        ric_agrupacioninteresados.setT_ili_tid(repository.t_ili_tid());
+        if (ric_agrupacioninteresados.getCol_grupointeresadotipo() != null) {
+            repository.save(ric_agrupacioninteresados);
+            if (repository.findById(ric_agrupacioninteresados.getT_id()).isPresent()) {
+                return repository.findById(ric_agrupacioninteresados.getT_id()).get();
+            } else {
+                return new Ric_agrupacioninteresados();
+            }
+        } else {
+            return new Ric_agrupacioninteresados();
+        }
+    }
 }

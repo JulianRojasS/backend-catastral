@@ -2,7 +2,7 @@ package com.example.catastral.Entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -17,9 +17,8 @@ public class Ric_agrupacioninteresados {
     private Integer t_id;
     @Column(unique = true)
     private UUID t_ili_tid;
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "tipo", referencedColumnName = "t_id", nullable = false)
-    @JsonManagedReference
     private Col_grupointeresadotipo col_grupointeresadotipo;
     @Column(nullable = true, length = 255)
     private String nombre;
@@ -34,25 +33,25 @@ public class Ric_agrupacioninteresados {
     private String local_id;
 
     @OneToMany(mappedBy = "ric_agrupacioninteresados", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Ric_derecho> ricderecho;
     @OneToMany(mappedBy = "ric_agrupacioninteresados", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Col_baunitcomointeresado> colbaunitcomointeresados;
     @OneToMany(mappedBy = "ric_agrupacioninteresados", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Col_responsablefuente> colresponsablefuente;
     @OneToMany(mappedBy = "ric_agrupacioninteresados", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Col_miembros> colmiembrosia;
     @OneToMany(mappedBy = "ric_agrupacioni", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Col_miembros> colmiembrosa;
     @OneToMany(mappedBy = "ric_agrupacioninteresados", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Col_topografofuente> coltopografofuente;
     @OneToMany(mappedBy = "ric_agrupacioninteresados", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Extinteresado> extinteresado;
 
     public Ric_agrupacioninteresados(Integer t_id, UUID t_ili_tid, Col_grupointeresadotipo col_grupointeresadotipo, String nombre, Date comienzo_vida_util_version, Date fin_vida_util_version, String espacio_de_nombres, String local_id) {

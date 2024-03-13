@@ -1,7 +1,7 @@
 package com.example.catastral.Entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.sql.Timestamp;
@@ -11,7 +11,7 @@ import java.util.UUID;
 @Entity
 @Table(name = "ric_nu_caraslindero", schema = "ric")
 public class Ric_nu_caraslindero {
-    @JsonManagedReference
+    @JsonIgnore
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer t_id;
@@ -32,16 +32,16 @@ public class Ric_nu_caraslindero {
     private String local_id;
 
     @OneToMany(mappedBy = "ric_nu_caraslindero", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Col_clfuente> colclfuente;
     @OneToMany(mappedBy = "ric_nu_caraslindero", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Col_puntocl> colpuntocl;
     @OneToMany(mappedBy = "ric_nu_caraslindero", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Col_mascl> colmascl;
     @OneToMany(mappedBy = "ric_nu_caraslindero", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Col_menoscl> colmenoscl;
 
     public Ric_nu_caraslindero(Integer t_id, UUID t_ili_id, String geometria, String localizacion_textual, Timestamp comienzo_vida_util_version, Timestamp fin_vida_util_version, String espacio_de_nombres, String local_id) {

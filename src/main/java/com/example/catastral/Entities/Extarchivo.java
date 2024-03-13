@@ -2,7 +2,7 @@ package com.example.catastral.Entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -31,11 +31,9 @@ public class Extarchivo {
     private String local_id;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "ric_fuenteadministrativa_ext_archivo_id", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Ric_fuenteadministrativa ric_fuenteadministrativa;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "ric_fuenteespacial_ext_archivo_id", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Ric_fuenteespacial ric_fuenteespacial;
 
     public Extarchivo(Integer t_id, Integer t_seq, Date fecha_aceptacion, String datos, Date extraccion, Date fecha_grabacion, Date fecha_entrega, String espacio_de_nombres, String local_id, Ric_fuenteadministrativa ric_fuenteadministrativa, Ric_fuenteespacial ric_fuenteespacial) {

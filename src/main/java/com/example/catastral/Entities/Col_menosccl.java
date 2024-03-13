@@ -2,7 +2,7 @@ package com.example.catastral.Entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 @Entity
 @Table(name = "col_menosccl", schema = "ric")
@@ -12,27 +12,21 @@ public class Col_menosccl {
     private Integer t_id;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "ccl_menos", referencedColumnName = "t_id", nullable = false)
-    @JsonManagedReference
     private Ric_nu_cadenacaraslimite ric_nu_cadenacaraslimite;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "ue_menos_ric_terreno", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Ric_terreno ric_terreno;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "ue_menos_ric_construccion", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Ric_construccion ric_construccion;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "ue_menos_ric_unidadconstruccion", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Ric_unidadconstruccion ric_unidadconstruccion;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "ue_menos_ric_nu_espaciojuridicounidadedificacion", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Ric_nu_espaciojuridicounidadedificacion ric_nu_espaciojuridicounidadedificacion;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "ue_menos_ric_nu_espaciojuridicoredservicios", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Ric_nu_espaciojuridicoredservicios ric_nu_espaciojuridicoredservicios;
 
     public Col_menosccl(Integer t_id, Ric_nu_cadenacaraslimite ric_nu_cadenacaraslimite, Ric_terreno ric_terreno, Ric_construccion ric_construccion, Ric_unidadconstruccion ric_unidadconstruccion, Ric_nu_espaciojuridicounidadedificacion ric_nu_espaciojuridicounidadedificacion, Ric_nu_espaciojuridicoredservicios ric_nu_espaciojuridicoredservicios) {

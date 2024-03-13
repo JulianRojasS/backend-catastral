@@ -1,11 +1,9 @@
 package com.example.catastral.Controllers;
 
 import com.example.catastral.Entities.Ric_derecho;
+import com.example.catastral.Entities.Ric_interesado;
 import com.example.catastral.Services.ric_derechoService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
@@ -32,5 +30,9 @@ public class ric_derechoController {
     @GetMapping("/derechosPredio/{t_id}")
     public ArrayList<Ric_derecho> derechoPredio (@PathVariable("t_id") Integer t_id) {
         return service.derechoPredio(t_id);
+    }
+    @PutMapping(path = "/actualizarDerecho")
+    public boolean derechoActualizar (@RequestBody Ric_derecho ric_derecho) {
+        return service.derechoActualizar(ric_derecho);
     }
 }

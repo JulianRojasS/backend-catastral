@@ -1,7 +1,7 @@
 package com.example.catastral.Entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.Set;
@@ -9,7 +9,6 @@ import java.util.Set;
 @Entity
 @Table(name = "col_dimensiontipo", schema = "ric")
 public class Col_dimensiontipo {
-    @JsonManagedReference
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer t_id;
@@ -30,19 +29,19 @@ public class Col_dimensiontipo {
     @Column(nullable = true, length = 1024)
     private String description;
     @OneToMany(mappedBy = "col_dimensiontipo", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Ric_unidadconstruccion> ricunidadconstruccion;
     @OneToMany(mappedBy = "col_dimensiontipo", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Ric_construccion> ricconstruccion;
     @OneToMany(mappedBy = "col_dimensiontipo", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Ric_nu_espaciojuridicounidadedificacion> ricnuespaciojuridicounidadedificacion;
     @OneToMany(mappedBy = "col_dimensiontipo", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Ric_terreno> ricterreno;
     @OneToMany(mappedBy = "col_dimensiontipo", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Ric_nu_espaciojuridicoredservicios> ricnuespaciojuridicoredservicios;
 
     public Col_dimensiontipo(Integer t_id, String thisclass, String baseclass, Integer itfcode, String ilicode, Integer seq, Boolean inactive, String dispname, String description) {

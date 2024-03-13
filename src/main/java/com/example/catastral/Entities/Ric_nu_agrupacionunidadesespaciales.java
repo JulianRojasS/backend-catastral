@@ -2,7 +2,7 @@ package com.example.catastral.Entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.sql.Timestamp;
@@ -27,7 +27,6 @@ public class Ric_nu_agrupacionunidadesespaciales {
     private String punto_referencia;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "agrupacion", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Ric_nu_agrupacionunidadesespaciales ric_nu_agrupacionunidadesespaciales;
     @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = false)

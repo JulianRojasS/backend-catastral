@@ -4,7 +4,9 @@ import com.example.catastral.Entities.Ric_interesado;
 import com.example.catastral.Repositories.ric_interesadoRepository;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -48,5 +50,19 @@ public class ric_interesadoService {
             }
         }
         return response;
+    }
+
+    public Ric_interesado insertarInteresado (Ric_interesado interesado) {
+        interesado.setT_ili_tid(repository.t_ili_tid());
+        if (interesado.getDocumento_identidad() != null) {
+            repository.save(interesado);
+            if (repository.findById(this.interesadoDocumento(interesado.getDocumento_identidad()).getT_id()).isPresent()) {
+                return repository.findById(interesado.getT_id()).get();
+            } else {
+                return new Ric_interesado();
+            }
+        } else {
+            return new Ric_interesado();
+        }
     }
 }

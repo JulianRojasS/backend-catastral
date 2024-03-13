@@ -2,7 +2,7 @@ package com.example.catastral.Entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.UUID;
@@ -33,7 +33,6 @@ public class Ric_datosphcondominio {
     private Integer total_unidades_privadas;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "ric_predio", referencedColumnName = "t_id", nullable = false)
-    @JsonManagedReference
     private Ric_predio ric_predio;
 
     public Ric_datosphcondominio(Integer t_id, UUID t_ili_tid, Float area_total_terreno, Float area_total_terreno_privada, Float area_total_terreno_comun, Float area_total_construida, Float area_total_construida_privada, Float area_total_construida_comun, Integer numero_torres, Integer total_unidades_privadas, Ric_predio ric_predio) {

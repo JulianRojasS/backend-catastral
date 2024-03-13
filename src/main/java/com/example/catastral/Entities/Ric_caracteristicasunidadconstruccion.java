@@ -2,7 +2,7 @@ package com.example.catastral.Entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.sql.Timestamp;
@@ -21,15 +21,12 @@ public class Ric_caracteristicasunidadconstruccion {
     private String identificador;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "tipo_construccion", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Ric_construcciontipo ric_construcciontipo;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "tipo_dominio", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Ric_dominioconstrucciontipo ric_dominioconstrucciontipo;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "tipo_unidad_construccion", referencedColumnName = "t_id", nullable = false)
-    @JsonManagedReference
     private Ric_unidadconstrucciontipo ric_unidadconstrucciontipo;
     @Column(nullable = true)
     private Integer total_habitaciones;
@@ -41,7 +38,6 @@ public class Ric_caracteristicasunidadconstruccion {
     private Integer total_plantas;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "uso", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Ric_usouconstipo ric_usouconstipo;
     @Column(nullable = true)
     private Integer anio_construccion;
@@ -62,7 +58,7 @@ public class Ric_caracteristicasunidadconstruccion {
     private String local_id;
 
     @OneToMany(mappedBy = "ric_caracteristicasunidadconstruccion", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Ric_unidadconstruccion> ricunidadconstruccion;
 
     public Ric_caracteristicasunidadconstruccion(Integer t_id, UUID t_ili_tid, String identificador, Ric_construcciontipo ric_construcciontipo, Ric_dominioconstrucciontipo ric_dominioconstrucciontipo, Ric_unidadconstrucciontipo ric_unidadconstrucciontipo, Integer total_habitaciones, Integer total_banios, Integer total_locales, Integer total_plantas, Ric_usouconstipo ric_usouconstipo, Integer anio_construccion, Float area_construida, Float area_privada_construida, String observaciones, Timestamp comienzo_vida_util_version, Timestamp fin_vida_util_version, String espacio_de_nombres, String local_id) {

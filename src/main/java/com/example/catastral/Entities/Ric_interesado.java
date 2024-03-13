@@ -2,11 +2,12 @@ package com.example.catastral.Entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.sql.Time;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Set;
 import java.util.UUID;
 
@@ -20,11 +21,9 @@ public class Ric_interesado {
     private UUID t_ili_tid;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "tipo", referencedColumnName = "t_id", nullable = false)
-    @JsonManagedReference
     private Ric_interesadotipo ric_interesadotipo;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "tipo_documento", referencedColumnName = "t_id", nullable = false)
-    @JsonManagedReference
     private Ric_interesadodocumentotipo ric_interesadodocumentotipo;
     @Column(nullable = false, length = 50)
     private String documento_identidad;
@@ -38,23 +37,20 @@ public class Ric_interesado {
     private String segundo_apellido;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "sexo", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Ric_sexotipo ric_sexotipo;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "grupoetnico", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Ric_grupoetnicotipo ric_grupoetnicotipo;
     @Column(nullable = true, length = 255)
     private String razon_social;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "estado_civil", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Ric_estadociviltipo ric_estadociviltipo;
     @Column(nullable = true, length = 255)
     private String nombre;
     @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = false)
-    private Timestamp comienzo_vida_util_version;
+    private Timestamp comienzo_vida_util_version = new Timestamp(new Date().getTime());
     @Temporal(TemporalType.TIMESTAMP)
     private Timestamp fin_vida_util_version;
     @Column(nullable = false, length = 255)
@@ -63,27 +59,25 @@ public class Ric_interesado {
     private String local_id;
 
     @OneToMany(mappedBy = "ric_interesado", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Extinteresado> extinteresado;
     @OneToMany(mappedBy = "ric_interesado", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Col_topografofuente> colopografofuente;
     @OneToMany(mappedBy = "ric_interesado", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Col_miembros> colmiembros;
     @OneToMany(mappedBy = "ric_interesado", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Col_responsablefuente> colresponsablefuente;
     @OneToMany(mappedBy = "ric_interesado", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Col_baunitcomointeresado> colbaunitcomointeresado;
     @OneToMany(mappedBy = "ric_interesado", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Ric_derecho> ricderecho;
 
-    public Ric_interesado(Integer t_id, UUID t_ili_tid, Ric_interesadotipo ric_interesadotipo, Ric_interesadodocumentotipo ric_interesadodocumentotipo, String documento_identidad, String primer_nombre, String segundo_nombre, String primer_apellido, String segundo_apellido, Ric_sexotipo ric_sexotipo, Ric_grupoetnicotipo ric_grupoetnicotipo, String razon_social, Ric_estadociviltipo ric_estadociviltipo, String nombre, Timestamp comienzo_vida_util_version, Timestamp fin_vida_util_version, String espacio_de_nombres, String local_id) {
-        this.t_id = t_id;
-        this.t_ili_tid = t_ili_tid;
+    public Ric_interesado(Ric_interesadotipo ric_interesadotipo, Ric_interesadodocumentotipo ric_interesadodocumentotipo, String documento_identidad, String primer_nombre, String segundo_nombre, String primer_apellido, String segundo_apellido, Ric_sexotipo ric_sexotipo, Ric_grupoetnicotipo ric_grupoetnicotipo, String razon_social, Ric_estadociviltipo ric_estadociviltipo, String nombre, String espacio_de_nombres, String local_id) {
         this.ric_interesadotipo = ric_interesadotipo;
         this.ric_interesadodocumentotipo = ric_interesadodocumentotipo;
         this.documento_identidad = documento_identidad;
@@ -96,8 +90,6 @@ public class Ric_interesado {
         this.razon_social = razon_social;
         this.ric_estadociviltipo = ric_estadociviltipo;
         this.nombre = nombre;
-        this.comienzo_vida_util_version = comienzo_vida_util_version;
-        this.fin_vida_util_version = fin_vida_util_version;
         this.espacio_de_nombres = espacio_de_nombres;
         this.local_id = local_id;
     }

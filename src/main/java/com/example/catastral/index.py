@@ -22,7 +22,7 @@ def crearArchivos():
 def editar (nombre):
     with open (f'Entities/{nombre}.java', 'r') as archivo_leer:
         archivo = archivo_leer.read()
-        nuevo = archivo.replace(')\npublic class', ', schema = "ric")\npublic class')
+        nuevo = archivo.replace('LAZY)\n    private Set', 'LAZY)\n    @JsonIgnore\n    private Set')
         with open (f'Entities/{nombre}.java', 'w') as archivo_editar:
             archivo_editar.write(nuevo)
 
@@ -31,4 +31,4 @@ def editarArchivos():
     for nombre in nombres:
         editar(nombre)
         
-crearArchivos()
+editarArchivos()

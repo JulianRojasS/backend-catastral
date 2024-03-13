@@ -1,14 +1,14 @@
 package com.example.catastral.Entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.Set;
 @Entity
 @Table(name = "col_relacionsuperficietipo", schema = "ric")
 public class Col_relacionsuperficietipo {
-    @JsonManagedReference
+    @JsonIgnore
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer t_id;
@@ -29,19 +29,19 @@ public class Col_relacionsuperficietipo {
     @Column(nullable = true, length = 1024)
     private String description;
     @OneToMany(mappedBy = "col_relacionsuperficietipo", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Ric_nu_espaciojuridicoredservicios> ricnuespaciojuridicoredservicio;
     @OneToMany(mappedBy = "col_relacionsuperficietipo", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Ric_terreno> ricterreno;
     @OneToMany(mappedBy = "col_relacionsuperficietipo", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Ric_construccion> ricconstruccion;
     @OneToMany(mappedBy = "col_relacionsuperficietipo", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Ric_unidadconstruccion> ricunidadconstruccion;
     @OneToMany(mappedBy = "col_relacionsuperficietipo", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Ric_nu_espaciojuridicounidadedificacion> ricnuespaciojuridicounidadedificacions;
 
     public Col_relacionsuperficietipo(Integer t_id, String thisclass, String baseclass, Integer itfcode, String ilicode, Integer seq, Boolean inactive, String dispname, String description) {

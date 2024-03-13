@@ -1,11 +1,8 @@
 package com.example.catastral.Entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
-import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Set;
@@ -21,7 +18,6 @@ public class Ric_derecho {
     private UUID t_ili_tid;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "tipo", referencedColumnName = "t_id", nullable = false)
-    @JsonManagedReference
     private Ric_derechotipo ric_derechotipo;
     @Column(nullable = true)
     private Float fraccion_derecho;
@@ -31,15 +27,12 @@ public class Ric_derecho {
     private String descripcion;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "interesado_ric_interesado", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Ric_interesado ric_interesado;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "interesado_ric_agrupacioninteresados", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Ric_agrupacioninteresados ric_agrupacioninteresados;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "unidad", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Ric_predio ric_predio;
     @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = false)
@@ -52,7 +45,7 @@ public class Ric_derecho {
     private String local_id;
 
     @OneToMany(mappedBy = "ric_derecho", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Col_rrrfuente> colrrrfuente;
 
     public Ric_derecho(Integer t_id, UUID t_ili_tid, Ric_derechotipo ric_derechotipo, Float fraccion_derecho, Date fecha_inicio_tenencia, String descripcion, Ric_interesado ric_interesado, Ric_agrupacioninteresados ric_agrupacioninteresados, Ric_predio ric_predio, Timestamp comienzo_vida_util_version, Timestamp fin_vida_util_version, String espacio_de_nombres, String local_id) {

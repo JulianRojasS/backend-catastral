@@ -2,7 +2,7 @@ package com.example.catastral.Entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -15,7 +15,6 @@ public class Col_areavalor {
     private Integer t_seq;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "tipo", referencedColumnName = "t_id", nullable = false)
-    @JsonManagedReference
     private Col_areatipo col_areatipo;
     @Column(nullable = false)
     private Float area;
@@ -23,23 +22,19 @@ public class Col_areavalor {
     private String datos_proyeccion;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "ric_construccion_area", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Ric_construccion ric_construccion;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "ric_n_spcjrdcrdsrvcios_area", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Ric_nu_espaciojuridicoredservicios ric_nu_espaciojuridicoredservicios;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "ric_n_spcjrcndddfccion_area", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Ric_nu_espaciojuridicounidadedificacion ric_nu_espaciojuridicounidadedificacion;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "ric_terreno_area", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Ric_terreno ric_terreno;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "ric_unidadconstruccion_area", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
+    @JsonIgnore
     Ric_unidadconstruccion ric_unidadconstruccion;
 
     public Col_areavalor(Integer t_id, Integer t_seq, Col_areatipo col_areatipo, Float area, String datos_proyeccion, Ric_construccion ric_construccion, Ric_nu_espaciojuridicoredservicios ric_nu_espaciojuridicoredservicios, Ric_nu_espaciojuridicounidadedificacion ric_nu_espaciojuridicounidadedificacion, Ric_terreno ric_terreno, Ric_unidadconstruccion ric_unidadconstruccion) {

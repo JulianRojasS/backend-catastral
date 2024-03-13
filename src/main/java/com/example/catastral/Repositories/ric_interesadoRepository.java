@@ -1,15 +1,18 @@
 package com.example.catastral.Repositories;
 
 import com.example.catastral.Entities.Ric_interesado;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 @Repository
 public interface ric_interesadoRepository extends CrudRepository<Ric_interesado, Integer> {
@@ -21,5 +24,8 @@ public interface ric_interesadoRepository extends CrudRepository<Ric_interesado,
 
     @Query(value = "SELECT * FROM ric.ric_interesado WHERE nombre LIKE :value ORDER BY nombre", nativeQuery = true)
     public ArrayList<Ric_interesado> buscarPorNombre (@Param("value") String value);
+
+    @Query(value = "select  public.uuid_generate_v4();", nativeQuery = true)
+    UUID t_ili_tid();
 
 }

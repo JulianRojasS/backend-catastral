@@ -2,7 +2,7 @@ package com.example.catastral.Entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -17,15 +17,12 @@ public class Imagen {
     private String uri;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "extinteresado_huella_dactilar", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Extinteresado extinteresadoh;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "extinteresado_fotografia", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Extinteresado extinteresadof;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "extinteresado_firma", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Extinteresado extinteresadofa;
 
     public Imagen(Integer t_id, Integer t_seq, String uri, Extinteresado extinteresadoh, Extinteresado extinteresadof, Extinteresado extinteresadofa) {

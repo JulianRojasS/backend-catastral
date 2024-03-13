@@ -1,7 +1,7 @@
 package com.example.catastral.Entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.Set;
@@ -15,7 +15,7 @@ public class Gm_multicurve3d {
     @Column(nullable = true)
     private Integer t_seq;
     @OneToMany(mappedBy = "gm_multicurve3d", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Gm_curve3dlistvalue> gmcurve3dlistvalue;
 
     public Gm_multicurve3d(Integer t_id, Integer t_seq) {

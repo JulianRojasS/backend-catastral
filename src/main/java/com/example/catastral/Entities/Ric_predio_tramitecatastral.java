@@ -2,7 +2,7 @@ package com.example.catastral.Entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -13,12 +13,10 @@ public class Ric_predio_tramitecatastral {
     private Integer t_id;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "ric_predio", referencedColumnName = "t_id", nullable = false)
-    @JsonManagedReference
     private Ric_predio ric_predio;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "ric_tramite_catastral", referencedColumnName = "t_id", nullable = false)
-    @JsonManagedReference
     private Ric_tramitecatastral ric_tramitecatastral;
 
     public Ric_predio_tramitecatastral(Integer t_id, Ric_predio ric_predio, Ric_tramitecatastral ric_tramitecatastral) {
