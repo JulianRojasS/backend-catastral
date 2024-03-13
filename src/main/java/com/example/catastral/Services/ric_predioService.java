@@ -22,7 +22,9 @@ public class ric_predioService {
     }
 
     public Ric_predio ric_predio (Integer t_id) {
-        return repository.findById(t_id).get();
+        return repository.findById(t_id).
+
+                get();
     }
 
     public ArrayList<Ric_predio> predioByLike (String column, String value) {
