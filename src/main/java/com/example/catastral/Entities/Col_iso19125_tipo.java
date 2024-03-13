@@ -1,7 +1,7 @@
 package com.example.catastral.Entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.Set;
@@ -29,7 +29,7 @@ public class Col_iso19125_tipo {
     @Column(nullable = true, length = 1024)
     private String description;
     @OneToMany(mappedBy = "col_iso19125_tipo", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Ric_nu_relacionnecesariaunidadesespaciales> ricnurelacionnecesariaunidadesespaciales;
 
     public Col_iso19125_tipo(Integer t_id, String thisclass, String baseclass, Integer itfcode, String ilicode, Integer seq, Boolean inactive, String dispname, String description) {

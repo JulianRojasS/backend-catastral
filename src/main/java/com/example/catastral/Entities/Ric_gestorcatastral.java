@@ -1,7 +1,7 @@
 package com.example.catastral.Entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -24,7 +24,7 @@ public class Ric_gestorcatastral {
     @Column(nullable = false)
     private Date fecha_inicio_prestacion_servicio;
     @OneToMany(mappedBy = "ric_gestorcatastral", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Ric_predio> ricpredio;
 
     public Ric_gestorcatastral(Integer t_id, UUID t_ili_tid, String nombre_gestor, String nit_gestor_catastral, Date fecha_inicio_prestacion_servicio) {

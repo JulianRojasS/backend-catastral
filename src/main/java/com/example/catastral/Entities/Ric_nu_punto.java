@@ -2,7 +2,7 @@ package com.example.catastral.Entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.sql.Timestamp;
@@ -19,36 +19,29 @@ public class Ric_nu_punto {
     private UUID t_ili_tid;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "posicion_interpolacion", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Col_interpolaciontipo col_interpolaciontipo;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "puntotipo", referencedColumnName = "t_id", nullable = false)
-    @JsonManagedReference Col_puntotipo col_puntotipo;
+    @JsonIgnore Col_puntotipo col_puntotipo;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "metodoproduccion", referencedColumnName = "t_id", nullable = false)
-    @JsonManagedReference
     private Col_metodoproducciontipo col_metodoproducciontipo;
     @Column(nullable = false, columnDefinition = "public.geometry(multipolygonz, 9377)")
     private String geometria;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "ue_ric_terreno", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Ric_terreno ric_terreno;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "ue_ric_construccion", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Ric_construccion ric_construccion;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "ue_ric_unidadconstruccion", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Ric_unidadconstruccion ric_unidadconstruccion;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "ue_ric_nu_espaciojuridicounidadedificacion", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Ric_nu_espaciojuridicounidadedificacion ric_nu_espaciojuridicounidadedificacion;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "ue_ric_nu_espaciojuridicoredservicios", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Ric_nu_espaciojuridicoredservicios ric_nu_espaciojuridicoredservicios;
     @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = false)
@@ -60,16 +53,16 @@ public class Ric_nu_punto {
     @Column(nullable = false, length = 255)
     private String local_id;
     @OneToMany(mappedBy = "ric_nu_punto", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Col_transformacion> coltransformacion;
     @OneToMany(mappedBy = "ric_nu_punto", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Col_puntoccl> colpuntoccl;
     @OneToMany(mappedBy = "ric_nu_punto", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Col_puntofuente> colpuntofuente;
     @OneToMany(mappedBy = "ric_nu_punto", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Col_puntocl> colpuntocl;
 
     public Ric_nu_punto(Integer t_id, UUID t_ili_tid, Col_interpolaciontipo col_interpolaciontipo, Col_puntotipo col_puntotipo, Col_metodoproducciontipo col_metodoproducciontipo, String geometria, Ric_terreno ric_terreno, Ric_construccion ric_construccion, Ric_unidadconstruccion ric_unidadconstruccion, Ric_nu_espaciojuridicounidadedificacion ric_nu_espaciojuridicounidadedificacion, Ric_nu_espaciojuridicoredservicios ric_nu_espaciojuridicoredservicios, Timestamp comienzo_vida_util_version, Timestamp fin_vida_util_version, String espacio_de_nombres, String local_id) {

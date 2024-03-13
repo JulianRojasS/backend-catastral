@@ -2,7 +2,7 @@ package com.example.catastral.Entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -19,7 +19,6 @@ public class Ric_tramitecatastral {
     private UUID t_ili_tid;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "clasificacion_mutacion", referencedColumnName = "t_id", nullable = false)
-    @JsonManagedReference
     private Ric_mutaciontipo ric_mutaciontipo;
     @Column(nullable = false, length = 30)
     private String numero_resolucion;
@@ -31,7 +30,7 @@ public class Ric_tramitecatastral {
     private Date fecha_radicacion;
 
     @OneToMany(mappedBy = "ric_tramitecatastral", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Ric_predio_tramitecatastral> ricprediotramitecatastral;
 
     public Ric_tramitecatastral(Integer t_id, UUID t_ili_tid, Ric_mutaciontipo ric_mutaciontipo, String numero_resolucion, Date fecha_resolucion, Date fecha_radicacion) {

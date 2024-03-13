@@ -2,7 +2,7 @@ package com.example.catastral.Entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.sql.Timestamp;
@@ -18,15 +18,12 @@ public class Ric_nu_nivel {
     private String nombre;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "registro_tipo", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Col_registrotipo col_registrotipo;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "estructura", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Col_estructuratipo col_estructuratipo;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "tipo", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Col_contenidoniveltipo col_contenidoniveltipo;
     @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = false)
@@ -39,19 +36,19 @@ public class Ric_nu_nivel {
     private String local_id;
 
     @OneToMany(mappedBy = "ric_nu_nivel", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Ric_nu_espaciojuridicoredservicios> ricnuespaciojuridicoredservicio;
     @OneToMany(mappedBy = "ric_nu_nivel", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Ric_terreno> ricterreno;
     @OneToMany(mappedBy = "ric_nu_nivel", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Ric_construccion> ricconstruccion;
     @OneToMany(mappedBy = "ric_nu_nivel", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Ric_unidadconstruccion> ricunidadconstruccion;
     @OneToMany(mappedBy = "ric_nu_nivel", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Ric_nu_espaciojuridicounidadedificacion> ricnuespaciojuridicounidadedificacion;
 
     public Ric_nu_nivel(Integer t_id, String nombre, Col_registrotipo col_registrotipo, Col_estructuratipo col_estructuratipo, Col_contenidoniveltipo col_contenidoniveltipo, Timestamp comienzo_vida_util_version, Timestamp fin_vida_util_version, String espacio_de_nombres, String local_id) {

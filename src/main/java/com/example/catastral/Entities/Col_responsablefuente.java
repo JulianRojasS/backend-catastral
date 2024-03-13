@@ -2,7 +2,7 @@ package com.example.catastral.Entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -13,15 +13,12 @@ public class Col_responsablefuente {
     private Integer t_id;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "fuente_administrativa", referencedColumnName = "t_id", nullable = false)
-    @JsonManagedReference
     private Ric_fuenteadministrativa ric_fuenteadministrativa;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "interesado_ric_interesado", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Ric_interesado ric_interesado;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "interesado_ric_agrupacioninteresados", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Ric_agrupacioninteresados ric_agrupacioninteresados;
 
     public Col_responsablefuente(Integer t_id, Ric_fuenteadministrativa ric_fuenteadministrativa, Ric_interesado ric_interesado, Ric_agrupacioninteresados ric_agrupacioninteresados) {

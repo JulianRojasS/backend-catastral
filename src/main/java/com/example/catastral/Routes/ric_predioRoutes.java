@@ -43,10 +43,4 @@ public class ric_predioRoutes {
         model.addAttribute("geometriasUC", ricUnidadconstruccionService.GeometriasUnidadConstruccion(this.colUebaunitService.unidadconstruccionPredio(t_id)));
         return "predio";
     }
-
-    @GetMapping("/cambioPropietario/{t_id}")
-    public String cambioPropietarioPredio (@PathVariable("t_id") Integer t_id, Model model ) {
-        model.addAttribute("interesados", ricInteresadoService.predioDetalle(t_id));
-        return "cambioPropietario";
-    }
 }

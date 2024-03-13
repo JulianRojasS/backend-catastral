@@ -2,7 +2,7 @@ package com.example.catastral.Entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.awt.*;
@@ -22,27 +22,24 @@ public class Extinteresado {
     private String documento_escaneado;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "extredserviciosfisica_ext_interesado_administrador_id", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Extredserviciosfisica extredserviciosfisica;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "ric_agrupacionintrsdos_ext_pid", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Ric_agrupacioninteresados ric_agrupacioninteresados;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "ric_interesado_ext_pid", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Ric_interesado ric_interesado;
     @OneToMany(mappedBy = "extinteresadoh", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Imagen> imagenh;
     @OneToMany(mappedBy = "extinteresadof", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Imagen> imagenf;
     @OneToMany(mappedBy = "extinteresadofa", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Imagen> imagenfa;
     @OneToMany(mappedBy = "extinteresado", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Extdireccion> extdireccion;
 
     public Extinteresado(Integer t_id, Integer t_seq, String nombre, String documento_escaneado, Extredserviciosfisica extredserviciosfisica, Ric_agrupacioninteresados ric_agrupacioninteresados, Ric_interesado ric_interesado) {

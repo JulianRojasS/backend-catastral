@@ -35,4 +35,17 @@ public class col_unidadfuenteService {
         }
         return response;
     }
+
+    public Col_unidadfuente crear (Col_unidadfuente colUnidadfuente) {
+        if (colUnidadfuente.getRic_predio() != null && colUnidadfuente.getRic_fuenteadministrativa() != null) {
+            repository.save(colUnidadfuente);
+            if (repository.findById(colUnidadfuente.getT_id()).isPresent()) {
+                return repository.findById(colUnidadfuente.getT_id()).get();
+            } else {
+                return new Col_unidadfuente();
+            }
+        } else {
+            return new Col_unidadfuente();
+        }
+    }
 }

@@ -2,7 +2,7 @@ package com.example.catastral.Entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -11,23 +11,19 @@ public class Col_miembros {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer t_id;
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "interesado_ric_interesado", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Ric_interesado ric_interesado;
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "interesado_ric_agrupacioninteresados", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Ric_agrupacioninteresados ric_agrupacioninteresados;
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "agrupacion", referencedColumnName = "t_id", nullable = false)
-    @JsonManagedReference
     private Ric_agrupacioninteresados ric_agrupacioni;
     @Column(nullable = true)
     private Float participacion;
 
-    public Col_miembros(Integer t_id, Ric_interesado ric_interesado, Ric_agrupacioninteresados ric_agrupacioninteresados, Ric_agrupacioninteresados ric_agrupacioni, Float participacion) {
-        this.t_id = t_id;
+    public Col_miembros( Ric_interesado ric_interesado, Ric_agrupacioninteresados ric_agrupacioninteresados, Ric_agrupacioninteresados ric_agrupacioni, Float participacion) {
         this.ric_interesado = ric_interesado;
         this.ric_agrupacioninteresados = ric_agrupacioninteresados;
         this.ric_agrupacioni = ric_agrupacioni;
@@ -53,19 +49,19 @@ public class Col_miembros {
         this.ric_interesado = ric_interesado;
     }
 
-    public Ric_agrupacioninteresados getColmiembrosia() {
+    public Ric_agrupacioninteresados getRic_agrupacioninteresados() {
         return ric_agrupacioninteresados;
     }
 
-    public void setColmiembrosia(Ric_agrupacioninteresados ric_agrupacioninteresados) {
+    public void setRic_agrupacioninteresados(Ric_agrupacioninteresados ric_agrupacioninteresados) {
         this.ric_agrupacioninteresados = ric_agrupacioninteresados;
     }
 
-    public Ric_agrupacioninteresados getColmiembrosa() {
+    public Ric_agrupacioninteresados getRic_agrupacioni() {
         return ric_agrupacioni;
     }
 
-    public void setColmiembrosa(Ric_agrupacioninteresados ric_agrupacioni) {
+    public void setRic_agrupacioni(Ric_agrupacioninteresados ric_agrupacioni) {
         this.ric_agrupacioni = ric_agrupacioni;
     }
 
@@ -82,8 +78,8 @@ public class Col_miembros {
         return "Col_miembros{" +
                 "t_id=" + t_id +
                 ", ric_interesado=" + ric_interesado +
-                ", colmiembrosia=" + ric_agrupacioninteresados +
-                ", colmiembrosa=" + ric_agrupacioni +
+                ", ric_agrupacioninteresados=" + ric_agrupacioninteresados +
+                ", ric_agrupacioni=" + ric_agrupacioni +
                 ", participacion=" + participacion +
                 '}';
     }

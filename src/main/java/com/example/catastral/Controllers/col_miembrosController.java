@@ -2,10 +2,7 @@ package com.example.catastral.Controllers;
 
 import com.example.catastral.Entities.Col_miembros;
 import com.example.catastral.Services.col_miembrosService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
@@ -27,5 +24,14 @@ public class col_miembrosController {
     @GetMapping("/col_miembros/{t_id}")
     public Col_miembros col_miembros (@PathVariable("t_id") Integer t_id) {
         return service.col_miembros(t_id);
+    }
+    @DeleteMapping("/eliminarCol_miembrosByAgrupacion/{t_id}")
+    public boolean col_miembrosEliminarPorAgrupacion (@PathVariable("t_id") Integer t_id) {
+        return service.eliminarPorAgrupacion(t_id);
+    }
+    @PostMapping("/insertarCol_miembros")
+    public Integer col_miembrosInsertar (@RequestBody Col_miembros col_miembros) {
+        System.out.println(col_miembros);
+        return service.col_miembrosInsertar(col_miembros);
     }
 }

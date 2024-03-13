@@ -2,7 +2,7 @@ package com.example.catastral.Entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -17,9 +17,8 @@ public class Ric_fuenteadministrativa {
     private Integer t_id;
     @Column(unique = true)
     private UUID t_ili_tid;
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "tipo", referencedColumnName = "t_id", nullable = false)
-    @JsonManagedReference
     private Col_fuenteadministrativatipo col_fuenteadministrativatipo;
     @Column(nullable = true, length = 255)
     private String ente_emisor;
@@ -31,39 +30,35 @@ public class Ric_fuenteadministrativa {
     private String observacion;
     @Column(nullable = true, length = 150)
     private String numero_fuente;
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "estado_disponibilidad", referencedColumnName = "t_id", nullable = false)
-    @JsonManagedReference
     private Col_estadodisponibilidadtipo col_estadodisponibilidadtipo;
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY,  optional = false)
     @JoinColumn(name = "tipo_principal", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Ci_forma_presentacion_codigo ci_forma_presentacion_codigo;
     @Temporal(TemporalType.DATE)
     private Date fecha_documento_fuente;
     @Column(nullable = true, length = 255)
-    private String espacio_nombres;
+    private String espacio_de_nombres;
     @Column(nullable = false, length = 255)
     private String local_id;
 
     @OneToMany(mappedBy = "ric_fuenteadministrativa", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Col_unidadfuente> colunidadfuente;
     @OneToMany(mappedBy = "ric_fuenteadministrativa", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Col_relacionfuente> colrelacionfuente;
     @OneToMany(mappedBy = "ric_fuenteadministrativa", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Col_rrrfuente> colrrrfuente;
     @OneToMany(mappedBy = "ric_fuenteadministrativa", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Col_responsablefuente> colresponsablefuente;
     @OneToMany(mappedBy = "ric_fuenteadministrativa", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Extarchivo> extarchivo;
-    public Ric_fuenteadministrativa(Integer t_id, UUID t_ili_tid, Col_fuenteadministrativatipo col_fuenteadministrativatipo, String ente_emisor, Integer oficina_origen, String ciudad_origen, String observacion, String numero_fuente, Col_estadodisponibilidadtipo col_estadodisponibilidadtipo, Ci_forma_presentacion_codigo ci_forma_presentacion_codigo, Date fecha_documento_fuente, String espacio_nombres, String local_id) {
-        this.t_id = t_id;
-        this.t_ili_tid = t_ili_tid;
+    public Ric_fuenteadministrativa(Col_fuenteadministrativatipo col_fuenteadministrativatipo, String ente_emisor, Integer oficina_origen, String ciudad_origen, String observacion, String numero_fuente, Col_estadodisponibilidadtipo col_estadodisponibilidadtipo, Ci_forma_presentacion_codigo ci_forma_presentacion_codigo, Date fecha_documento_fuente, String espacio_de_nombres, String local_id) {
         this.col_fuenteadministrativatipo = col_fuenteadministrativatipo;
         this.ente_emisor = ente_emisor;
         this.oficina_origen = oficina_origen;
@@ -73,7 +68,7 @@ public class Ric_fuenteadministrativa {
         this.col_estadodisponibilidadtipo = col_estadodisponibilidadtipo;
         this.ci_forma_presentacion_codigo = ci_forma_presentacion_codigo;
         this.fecha_documento_fuente = fecha_documento_fuente;
-        this.espacio_nombres = espacio_nombres;
+        this.espacio_de_nombres = espacio_de_nombres;
         this.local_id = local_id;
     }
 
@@ -168,12 +163,12 @@ public class Ric_fuenteadministrativa {
         this.fecha_documento_fuente = fecha_documento_fuente;
     }
 
-    public String getEspacio_nombres() {
-        return espacio_nombres;
+    public String getEspacio_de_nombres() {
+        return espacio_de_nombres;
     }
 
-    public void setEspacio_nombres(String espacio_nombres) {
-        this.espacio_nombres = espacio_nombres;
+    public void setEspacio_de_nombres(String espacio_de_nombres) {
+        this.espacio_de_nombres = espacio_de_nombres;
     }
 
     public String getLocal_id() {
@@ -222,7 +217,7 @@ public class Ric_fuenteadministrativa {
                 ", col_estadodisponibilidadtipo=" + col_estadodisponibilidadtipo +
                 ", ci_forma_presentacion_codigo=" + ci_forma_presentacion_codigo +
                 ", fecha_documento_fuente=" + fecha_documento_fuente +
-                ", espacio_nombres='" + espacio_nombres + '\'' +
+                ", espacio_de_nombres='" + espacio_de_nombres + '\'' +
                 ", local_id='" + local_id + '\'' +
                 '}';
     }

@@ -2,7 +2,7 @@ package com.example.catastral.Entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -15,7 +15,6 @@ public class Extdireccion {
     private Integer t_seq;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "tipo_direccion", referencedColumnName = "t_id", nullable = false)
-    @JsonManagedReference
     private Extdireccion_tipo_direccion extdireccion_tipo_direccion;
     @Column(nullable = true)
     private Boolean es_direccion_principal;
@@ -25,7 +24,6 @@ public class Extdireccion {
     private String codigo_postal;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "clase_via_principal", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Extdireccion_clase_via_principal extdireccion_clase_via_principal;
     @Column(nullable = true, length = 100)
     private String valor_via_principal;
@@ -33,7 +31,6 @@ public class Extdireccion {
     private String letra_via_principal;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "sector_ciudad", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Extdireccion_sector_ciudad extdireccion_sector_ciudad;
     @Column(nullable = true, length = 100)
     private String valor_via_generadora;
@@ -43,7 +40,6 @@ public class Extdireccion {
     private String numero_predio;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "sector_predio", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Extdireccion_sector_predio extdireccion_sector_predio;
     @Column(nullable = true, length = 255)
     private String complemento;
@@ -51,35 +47,27 @@ public class Extdireccion {
     private String nombre_predio;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "extunidadedificcnfsica_ext_direccion_id", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Extunidadedificacionfisica extunidadedificacionfisica;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "extinteresado_ext_direccion_id", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Extinteresado extinteresado;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "ric_construccion_ext_direccion_id", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Ric_construccion ric_construccion;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "ric_n_spcjrdcrdsrvcios_ext_direccion_id", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Ric_nu_espaciojuridicoredservicios ric_nu_espaciojuridicoredservicios;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "ric_n_spcjrcndddfccion_ext_direccion_id", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Ric_nu_espaciojuridicounidadedificacion ric_nu_espaciojuridicounidadedificacion;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "ric_predio_direccion", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private  Ric_predio ric_predio;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "ric_terreno_ext_direccion_id", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Ric_terreno ric_terreno;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "ric_unidadconstruccion_ext_direccion_id", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Ric_unidadconstruccion ric_unidadconstruccion;
 
     public Extdireccion(Integer t_id, Integer t_seq, Extdireccion_tipo_direccion extdireccion_tipo_direccion, Boolean es_direccion_principal, String localizacion, String codigo_postal, Extdireccion_clase_via_principal extdireccion_clase_via_principal, String valor_via_principal, String letra_via_principal, Extdireccion_sector_ciudad extdireccion_sector_ciudad, String valor_via_generadora, String letra_via_generadora, String numero_predio, Extdireccion_sector_predio extdireccion_sector_predio, String complemento, String nombre_predio, Extunidadedificacionfisica extunidadedificacionfisica, Extinteresado extinteresado, Ric_construccion ric_construccion, Ric_nu_espaciojuridicoredservicios ric_nu_espaciojuridicoredservicios, Ric_nu_espaciojuridicounidadedificacion ric_nu_espaciojuridicounidadedificacion, Ric_predio ric_predio, Ric_terreno ric_terreno, Ric_unidadconstruccion ric_unidadconstruccion) {

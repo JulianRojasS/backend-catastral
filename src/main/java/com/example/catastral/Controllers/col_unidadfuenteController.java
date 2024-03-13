@@ -3,10 +3,7 @@ package com.example.catastral.Controllers;
 import com.example.catastral.Entities.Col_unidadfuente;
 import com.example.catastral.Entities.Ric_fuenteadministrativa;
 import com.example.catastral.Services.col_unidadfuenteService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
@@ -32,5 +29,10 @@ public class col_unidadfuenteController {
     @GetMapping("/fuentesAdministrativasPredio/{t_id}")
     public ArrayList<Ric_fuenteadministrativa> fuenteAdministrativaPredio (@PathVariable("t_id") Integer t_id) {
         return service.fuenteAdministrativaPredio(t_id);
+    }
+    @PostMapping("/insertarCol_unidadfuente")
+    public Col_unidadfuente col_unidadfuenteInsertar (@RequestBody Col_unidadfuente colUnidadfuente) {
+        System.out.println(colUnidadfuente);
+        return service.crear(colUnidadfuente);
     }
 }

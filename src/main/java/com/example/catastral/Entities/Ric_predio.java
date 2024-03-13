@@ -2,7 +2,7 @@ package com.example.catastral.Entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.sql.Date;
@@ -38,39 +38,31 @@ public class Ric_predio {
     private Date fecha_inscripcion_catastral;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "condicion_predio", referencedColumnName = "t_id", nullable = false)
-    @JsonManagedReference
     private Ric_condicionprediotipo ric_condicionprediotipo;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "destinacion_economica", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Ric_destinacioneconomicatipo ric_destinacioneconomicatipo;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "tipo", referencedColumnName = "t_id", nullable = false)
-    @JsonManagedReference
     private Col_unidadadministrativabasicatipo col_unidadadministrativabasicatipo;
     @Column(nullable = false)
     private Float avaluo_catastral;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "zona", referencedColumnName = "t_id", nullable = false)
-    @JsonManagedReference
     private Ric_zonatipo ric_zonatipo;
     @Temporal(TemporalType.DATE)
     private Date vigencia_actualizacion_catastral;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "estado", referencedColumnName = "t_id", nullable = false)
-    @JsonManagedReference
     private Ric_estadotipo ric_estadotipo;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "catastro", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Ric_catastrotipo ric_catastrotipo;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "ric_gestorcatastral", referencedColumnName = "t_id", nullable = false)
-    @JsonManagedReference
     private Ric_gestorcatastral ric_gestorcatastral;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "ric_operadorcatastral", referencedColumnName = "t_id", nullable = false)
-    @JsonManagedReference
     private Ric_operadorcatastral ric_operadorcatastral;
     @Column(nullable = true, length = 255)
     private String nombre;
@@ -84,40 +76,40 @@ public class Ric_predio {
     @Column(nullable = false, length = 255)
     private String local_id;
     @OneToMany(mappedBy = "ric_predio", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Ric_predio_tramitecatastral> ricprediotramitecatastral;
     @OneToMany(mappedBy = "ric_predio", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Ric_datosphcondominio> ricdatosphcondominio;
     @OneToMany(mappedBy = "ric_predio_formal", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Ric_predio_informalidad> ric_predio_formal;
     @OneToMany(mappedBy = "ric_predio_informal", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Ric_predio_informalidad> ric_predio_informal;
     @OneToMany(mappedBy = "ric_unidad_predial", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Ric_predio_copropiedad> ricprediocopropiedad;
     @OneToMany(mappedBy = "ric_matriz", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Ric_predio_copropiedad> ricprediocopropiedad2;
     @OneToMany(mappedBy = "ric_predio", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Col_unidadfuente> colunidadfuente;
     @OneToMany(mappedBy = "ric_predio", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Ric_derecho> ricderecho;
     @OneToMany(mappedBy = "ric_predio", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Col_baunitcomointeresado> colbaunitcomointeresado;
     @OneToMany(mappedBy = "ric_predio", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Col_baunitfuente> colbaunitfuente;
     @OneToMany(mappedBy = "ric_predio", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Extdireccion> extdireccion;
     @OneToMany(mappedBy = "ric_predio", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Col_uebaunit> coluebaunit;
 
     public Ric_predio(Integer t_id, UUID t_ili_tid, String departamento, String municipio, String codigo_homologado, String nupre, String codigo_orip, String matricula_inmobiliaria, String numero_predial, String numero_predial_anterior, Date fecha_inscripcion_catastral, Ric_condicionprediotipo ric_condicionprediotipo, Ric_destinacioneconomicatipo ric_destinacioneconomicatipo, Col_unidadadministrativabasicatipo col_unidadadministrativabasicatipo, Float avaluo_catastral, Ric_zonatipo ric_zonatipo, Date vigencia_actualizacion_catastral, Ric_estadotipo ric_estadotipo, Ric_catastrotipo ric_catastrotipo, Ric_gestorcatastral ric_gestorcatastral, Ric_operadorcatastral ric_operadorcatastral, String nombre, Timestamp comienzo_vida_util_version, Timestamp fin_vida_util_version, String espacio_de_nombres, String local_id) {

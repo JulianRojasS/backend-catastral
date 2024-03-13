@@ -42,5 +42,9 @@ public class ric_interesadoController {
         return service.interesadoDocumento(documento);
     }
 
+    @PostMapping(path = "/interesadoInsertar", consumes = "application/x-www-form-urlencoded")
+    public Ric_interesado interesadoInsertar (Ric_interesado interesado) {
+        return service.insertarInteresado(interesado);
+    }
 
 }

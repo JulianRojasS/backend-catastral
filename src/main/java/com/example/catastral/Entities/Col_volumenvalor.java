@@ -2,7 +2,7 @@ package com.example.catastral.Entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -17,27 +17,21 @@ public class Col_volumenvalor {
     private Float volumen_medicion;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "tipo", referencedColumnName = "t_id", nullable = false)
-    @JsonManagedReference
     private Col_volumentipo col_volumentipo;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "ric_construccion_volumen", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Ric_construccion ric_construccion;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "ric_n_spcjrdcrdsrvcios_volumen", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Ric_nu_espaciojuridicoredservicios ric_nu_espaciojuridicoredservicios;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "ric_n_spcjrcndddfccion_volumen", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Ric_nu_espaciojuridicounidadedificacion ric_nu_espaciojuridicounidadedificacion;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "ric_terreno_volumen", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Ric_terreno ric_terreno;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "ric_unidadconstruccion_volumen", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Ric_unidadconstruccion ric_unidadconstruccion;
 
     public Col_volumenvalor(Integer t_id, Integer t_seq, Float volumen_medicion, Col_volumentipo col_volumentipo, Ric_construccion ric_construccion, Ric_nu_espaciojuridicoredservicios ric_nu_espaciojuridicoredservicios, Ric_nu_espaciojuridicounidadedificacion ric_nu_espaciojuridicounidadedificacion, Ric_terreno ric_terreno, Ric_unidadconstruccion ric_unidadconstruccion) {

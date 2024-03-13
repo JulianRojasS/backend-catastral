@@ -2,7 +2,7 @@ package com.example.catastral.Entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.Set;
@@ -19,10 +19,9 @@ public class Extredserviciosfisica {
     private Boolean orientada;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "ric_n_spcjrdcrdsrvcios_ext_id_red_fisica", referencedColumnName = "t_id", nullable = true)
-    @JsonManagedReference
     private Ric_nu_espaciojuridicoredservicios ric_nu_espaciojuridicoredservicios;
     @OneToMany(mappedBy = "extredserviciosfisica", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<Extinteresado> extinteresado;
 
     public Extredserviciosfisica(Integer t_id, Integer t_seq, Boolean orientada, Ric_nu_espaciojuridicoredservicios ric_nu_espaciojuridicoredservicios) {
