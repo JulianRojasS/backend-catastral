@@ -3,7 +3,7 @@ package com.example.catastral.Entities;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "users", schema = "ric")
+@Table(name = "users", schema = "temporal")
 public class Users {
 
     @Id

@@ -17,20 +17,26 @@ function convertirCoordenadas(consulta) {
     return coords;
 }
 
-var terrenos = L.map('terrenos');
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(terrenos);
+if (geometriasTerrenos.length > 0) {
+    var terrenos = L.map('terrenos');
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(terrenos);
+}
 
-var construcciones = L.map('construcciones');
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(construcciones);
+if (coordenadasConstruccion.length > 0) {
+    var construcciones = L.map('construcciones');
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(construcciones);
+}
 
-var uconstrucciones = L.map('uconstrucciones');
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(uconstrucciones);
+if (coordenadasUnidadConstruccion.length > 0) {
+    var uconstrucciones = L.map('uconstrucciones');
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(uconstrucciones);
+}
 
 geometriasTerrenos.forEach(function(coordenadas) {
     var coordsLeaflet = convertirCoordenadas(coordenadas);

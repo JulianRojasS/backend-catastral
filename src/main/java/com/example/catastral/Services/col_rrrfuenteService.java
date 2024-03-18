@@ -1,6 +1,8 @@
 package com.example.catastral.Services;
 
 import com.example.catastral.Entities.Col_rrrfuente;
+import com.example.catastral.Entities.Col_unidadfuente;
+import com.example.catastral.Entities.Ric_fuenteadministrativa;
 import com.example.catastral.Repositories.col_rrrfuenteRepository;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +32,16 @@ public class col_rrrfuenteService {
         for (Col_rrrfuente col_rrrfuente : colRrrfuentes) {
             if (col_rrrfuente.getRic_derecho().getT_id().equals(t_id)) {
                 response.add(col_rrrfuente);
+            }
+        }
+        return response;
+    }
+    public ArrayList<Ric_fuenteadministrativa> fuenteAdministrativaPredio (Integer t_id) {
+        ArrayList<Col_rrrfuente> rrrfuentes = this.todo();
+        ArrayList<Ric_fuenteadministrativa> response = new ArrayList<Ric_fuenteadministrativa>();
+        for (Col_rrrfuente rrrfuente: rrrfuentes) {
+            if (rrrfuente.getRic_derecho().getT_id().equals(t_id)) {
+                response.add(rrrfuente.getRic_fuenteadministrativa());
             }
         }
         return response;
