@@ -29,7 +29,7 @@
 <div id="content">
     <center>
         <section id="predio">
-            <h1>Informacion predio</h1>
+            <h1>Información predio</h1>
             <div id="infoPredio">
                 <label for="departamento">Departamento</label>
                 <input id="departamento" th:value="${(predio.departamento == null) ? 'SIN REGISTRO' : predio.departamento}" disabled>
@@ -128,22 +128,22 @@
                 <th>Descripción</th>
                 </thead>
                 <tbody>
-                <th:block th:if="${derechos.isEmpty()}">
-                    <tr>
-                        <td colspan="4">No se encontraron resultados</td>
-                    </tr>
-                </th:block>
-                <th:block th:each="derecho : ${derechos}" th:if="${not derechos.isEmpty()}">
-                    <tr>
-                        <td><input id="d_tipo" th:value="${(derecho.ric_derechotipo == null) ? 'SIN REGISTRO' : derecho.ric_derechotipo.dispname}" disabled></td>
-                        <td><input id="fraccion_derecho" th:value="${(derecho.fraccion_derecho == null) ? 'SIN REGISTRO' : derecho.fraccion_derecho}" disabled></td>
-                        <td><input id="fecha_documento_fuente" th:value="${(derecho.fecha_inicio_tenencia == null) ? 'SIN REGISTRO' : derecho.fecha_inicio_tenencia}" disabled></td>
-                        <td><input id="descripcion" th:value="${(derecho.descripcion == null) ? 'SIN REGISTRO' : derecho.descripcion}" disabled></td>
-                    </tr>
-                </th:block>
+                    <th:block th:if="${derechos.isEmpty()}">
+                        <tr>
+                            <td colspan="4">No se encontraron resultados</td>
+                        </tr>
+                    </th:block>
+                    <th:block th:each="derecho : ${derechos}" th:if="${not derechos.isEmpty()}">
+                        <tr>
+                            <td><input id="d_tipo" th:value="${(derecho.ric_derechotipo == null) ? 'SIN REGISTRO' : derecho.ric_derechotipo.dispname}" disabled></td>
+                            <td><input id="fraccion_derecho" th:value="${(derecho.fraccion_derecho == null) ? 'SIN REGISTRO' : derecho.fraccion_derecho}" disabled></td>
+                            <td><input id="fecha_documento_fuente" th:value="${(derecho.fecha_inicio_tenencia == null) ? 'SIN REGISTRO' : derecho.fecha_inicio_tenencia}" disabled></td>
+                            <td><input id="descripcion" th:value="${(derecho.descripcion == null) ? 'SIN REGISTRO' : derecho.descripcion}" disabled></td>
+                        </tr>
+                    </th:block>
                 </tbody>
             </table >
-            <h2>Fuente Administartiva</h2>
+            <h2>Fuente Administrativa</h2>
             <table>
                 <thead>
                 <th>Tipo de Fuente</th>
@@ -155,22 +155,22 @@
                 <th>Fecha de Documento Fuente</th>
                 </thead>
                 <tbody>
-                <th:block th:if="${fuenteadministrativa.isEmpty()}">
-                    <tr>
-                        <td colspan="7">No se encontraron resultados</td>
-                    </tr>
-                </th:block>
-                <th:block th:each="fuente : ${fuenteadministrativa}" th:if="${not fuenteadministrativa.isEmpty()}">
-                    <tr>
-                        <td><input id="tipo" th:value="${(fuente.col_fuenteadministrativatipo == null) ? 'SIN REGISTRO' : fuente.col_fuenteadministrativatipo.dispname}" disabled></td>
-                        <td><input id="ente_emisor" th:value="${(fuente.ente_emisor == null) ? 'SIN REGISTRO' : fuente.ente_emisor}" disabled></td>
-                        <td><input id="observacion" th:value="${(fuente.observacion == null) ? 'SIN REGISTRO' : fuente.observacion}" disabled></td>
-                        <td><input id="numero_fuente" th:value="${(fuente.numero_fuente == null) ? 'SIN REGISTRO' : fuente.numero_fuente}" disabled></td>
-                        <td><input id="estado_disponibilidad" th:value="${(fuente.col_estadodisponibilidadtipo == null) ? 'SIN REGISTRO' : fuente.col_estadodisponibilidadtipo.dispname}" disabled></td>
-                        <td><input id="tipo_principal" th:value="${(fuente.ci_forma_presentacion_codigo == null) ? 'SIN REGISTRO' : fuente.ci_forma_presentacion_codigo.dispname}" disabled></td>
-                        <td><input id="f_fecha_documento_fuente" th:value="${fuente.fecha_documento_fuente}" disabled></td>
-                    </tr>
-                </th:block>
+                    <th:block th:if="${fuenteadministrativa.isEmpty()}">
+                        <tr>
+                            <td colspan="7">No se encontraron resultados</td>
+                        </tr>
+                    </th:block>
+                    <th:block th:each="fuente : ${fuenteadministrativa}" th:if="${not fuenteadministrativa.isEmpty()}">
+                        <tr>
+                            <td><input id="tipo" th:value="${(fuente.col_fuenteadministrativatipo == null) ? 'SIN REGISTRO' : fuente.col_fuenteadministrativatipo.dispname}" disabled></td>
+                            <td><input id="ente_emisor" th:value="${(fuente.ente_emisor == null) ? 'SIN REGISTRO' : fuente.ente_emisor}" disabled></td>
+                            <td><input id="observacion" th:value="${(fuente.observacion == null) ? 'SIN REGISTRO' : fuente.observacion}" disabled></td>
+                            <td><input id="numero_fuente" th:value="${(fuente.numero_fuente == null) ? 'SIN REGISTRO' : fuente.numero_fuente}" disabled></td>
+                            <td><input id="estado_disponibilidad" th:value="${(fuente.col_estadodisponibilidadtipo == null) ? 'SIN REGISTRO' : fuente.col_estadodisponibilidadtipo.dispname}" disabled></td>
+                            <td><input id="tipo_principal" th:value="${(fuente.ci_forma_presentacion_codigo == null) ? 'SIN REGISTRO' : fuente.ci_forma_presentacion_codigo.dispname}" disabled></td>
+                            <td><input id="f_fecha_documento_fuente" th:value="${fuente.fecha_documento_fuente}" disabled></td>
+                        </tr>
+                    </th:block>
                 </tbody>
             </table>
         </div>
@@ -189,20 +189,20 @@
             </tr>
             </thead>
             <tbody>
-            <th:block th:if="${interesados.isEmpty()}">
-                <tr>
-                    <td colspan="4">No se encontraron resultados</td>
-                </tr>
-            </th:block>
-            <th:block th:each="interesado : ${interesados}" th:if="${not interesados.isEmpty()}">
-                <tr>
-                    <td th:text="${(interesado.dispname == null) ? 'SIN REGISTRO' : interesado.dispname}"></td>
-                    <td th:text="${(interesado.documento_identidad == null) ? 'SIN REGISTRO' : interesado.documento_identidad}"></td>
-                    <td th:text="${(interesado.nombre == null) ? 'SIN REGISTRO' : interesado.nombre}"></td>
-                    <td th:text="${(interesado.participacion == null) ? 'SIN REGISTRO' : interesado.participacion}"></td>
-                    <td><button th:onclick="'See_Interesado(\'' + ${interesado.t_id} + '\')'">Ver mas</button></td>
-                </tr>
-            </th:block>
+                <th:block th:if="${interesados.isEmpty()}">
+                    <tr>
+                        <td colspan="4">No se encontraron resultados</td>
+                    </tr>
+                </th:block>
+                <th:block th:each="interesado : ${interesados}" th:if="${not interesados.isEmpty()}">
+                    <tr>
+                        <td th:text="${(interesado.dispname == null) ? 'SIN REGISTRO' : interesado.dispname}"></td>
+                        <td th:text="${(interesado.documento_identidad == null) ? 'SIN REGISTRO' : interesado.documento_identidad}"></td>
+                        <td th:text="${(interesado.nombre == null) ? 'SIN REGISTRO' : interesado.nombre}"></td>
+                        <td th:text="${(interesado.participacion == null) ? 'SIN REGISTRO' : interesado.participacion}"></td>
+                        <td><button th:onclick="'See_Interesado(\'' + ${interesado.t_id} + '\')'">Ver mas</button></td>
+                    </tr>
+                </th:block>
             </tbody>
         </table>
     </section>
@@ -231,34 +231,34 @@
             <th>Fin Vida Util Versión</th>
             </thead>
             <tbody>
-            <th:block th:if="${contrucciones.isEmpty()}">
-                <tr>
-                    <td colspan="19">No se encontraron resultados</td>
-                </tr>
-            </th:block>
-            <th:block th:each="construccion : ${contrucciones}" th:if="${not contrucciones.isEmpty()}">
-                <tr>
-                    <td th:text="${(construccion.identificador == null) ? 'SIN REGISTRO' : construccion.identificador}"></td>
-                    <td th:text="${(construccion.ric_construcciontipo == null) ? 'SIN REGISTRO' : construccion.ric_construcciontipo.dispname}"></td>
-                    <td th:text="${(construccion.ric_dominioconstrucciontipo == null) ? 'SIN REGISTRO' : construccion.ric_dominioconstrucciontipo.dispname}"></td>
-                    <td th:text="${(construccion.numero_pisos == null) ? 'SIN REGISTRO' : construccion.numero_pisos}"></td>
-                    <td th:text="${(construccion.numero_sotanos == null) ? 'SIN REGISTRO' : construccion.numero_sotanos}"></td>
-                    <td th:text="${(construccion.numero_mezanines == null) ? 'SIN REGISTRO' : construccion.numero_mezanines}"></td>
-                    <td th:text="${(construccion.numero_semisotanos == null) ? 'SIN REGISTRO' : construccion.numero_semisotanos}"></td>
-                    <td th:text="${(construccion.anio_construccion == null) ? 'SIN REGISTRO' : construccion.anio_construccion}"></td>
-                    <td th:text="${(construccion.avaluo_construccion == null) ? 'SIN REGISTRO' : construccion.avaluo_construccion}"></td>
-                    <td th:text="${(construccion.area_construccion == null) ? 'SIN REGISTRO' : construccion.area_construccion}"></td>
-                    <td th:text="${(construccion.altura == null) ? 'SIN REGISTRO' : construccion.altura}"></td>
-                    <td th:text="${(construccion.observaciones == null) ? 'SIN REGISTRO' : construccion.observaciones}"></td>
-                    <td th:text="${(construccion.codigo_construccion == null) ? 'SIN REGISTRO' : construccion.codigo_construccion}"></td>
-                    <td th:text="${(construccion.col_dimensiontipo == null) ? 'SIN REGISTRO' : construccion.col_dimensiontipo.dispname}"></td>
-                    <td th:text="${(construccion.etiqueta == null) ? 'SIN REGISTRO' : construccion.etiqueta}"></td>
-                    <td th:text="${(construccion.col_relacionsuperficietipo == null) ? 'SIN REGISTRO' : construccion.col_relacionsuperficietipo.dispname}"></td>
-                    <td th:text="${(construccion.ric_nu_nivel == null) ? 'SIN REGISTRO' : construccion.ric_nu_nivel.nombre}"></td>
-                    <td th:text="${(construccion.comienzo_vida_util_version == null) ? 'SIN REGISTRO' : construccion.comienzo_vida_util_version}"></td>
-                    <td th:text="${(construccion.fin_vida_util_version == null) ? 'SIN REGISTRO' : construccion.fin_vida_util_version}"></td>
-                </tr>
-            </th:block>
+                <th:block th:if="${contrucciones.isEmpty()}">
+                    <tr>
+                        <td colspan="19">No se encontraron resultados</td>
+                    </tr>
+                </th:block>
+                <th:block th:each="construccion : ${contrucciones}" th:if="${not contrucciones.isEmpty()}">
+                    <tr>
+                        <td th:text="${(construccion.identificador == null) ? 'SIN REGISTRO' : construccion.identificador}"></td>
+                        <td th:text="${(construccion.ric_construcciontipo == null) ? 'SIN REGISTRO' : construccion.ric_construcciontipo.dispname}"></td>
+                        <td th:text="${(construccion.ric_dominioconstrucciontipo == null) ? 'SIN REGISTRO' : construccion.ric_dominioconstrucciontipo.dispname}"></td>
+                        <td th:text="${(construccion.numero_pisos == null) ? 'SIN REGISTRO' : construccion.numero_pisos}"></td>
+                        <td th:text="${(construccion.numero_sotanos == null) ? 'SIN REGISTRO' : construccion.numero_sotanos}"></td>
+                        <td th:text="${(construccion.numero_mezanines == null) ? 'SIN REGISTRO' : construccion.numero_mezanines}"></td>
+                        <td th:text="${(construccion.numero_semisotanos == null) ? 'SIN REGISTRO' : construccion.numero_semisotanos}"></td>
+                        <td th:text="${(construccion.anio_construccion == null) ? 'SIN REGISTRO' : construccion.anio_construccion}"></td>
+                        <td th:text="${(construccion.avaluo_construccion == null) ? 'SIN REGISTRO' : construccion.avaluo_construccion}"></td>
+                        <td th:text="${(construccion.area_construccion == null) ? 'SIN REGISTRO' : construccion.area_construccion}"></td>
+                        <td th:text="${(construccion.altura == null) ? 'SIN REGISTRO' : construccion.altura}"></td>
+                        <td th:text="${(construccion.observaciones == null) ? 'SIN REGISTRO' : construccion.observaciones}"></td>
+                        <td th:text="${(construccion.codigo_construccion == null) ? 'SIN REGISTRO' : construccion.codigo_construccion}"></td>
+                        <td th:text="${(construccion.col_dimensiontipo == null) ? 'SIN REGISTRO' : construccion.col_dimensiontipo.dispname}"></td>
+                        <td th:text="${(construccion.etiqueta == null) ? 'SIN REGISTRO' : construccion.etiqueta}"></td>
+                        <td th:text="${(construccion.col_relacionsuperficietipo == null) ? 'SIN REGISTRO' : construccion.col_relacionsuperficietipo.dispname}"></td>
+                        <td th:text="${(construccion.ric_nu_nivel == null) ? 'SIN REGISTRO' : construccion.ric_nu_nivel.nombre}"></td>
+                        <td th:text="${(construccion.comienzo_vida_util_version == null) ? 'SIN REGISTRO' : construccion.comienzo_vida_util_version}"></td>
+                        <td th:text="${(construccion.fin_vida_util_version == null) ? 'SIN REGISTRO' : construccion.fin_vida_util_version}"></td>
+                    </tr>
+                </th:block>
             </tbody>
         </table>
         <div id="construcciones" class="map"></div>

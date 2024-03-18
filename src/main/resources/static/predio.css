@@ -1,7 +1,7 @@
 *{
-  margin: 0;
-  padding: 0;
-  font-family: 'Raleway', sans-serif;
+    margin: 0;
+    padding: 0;
+    font-family: 'Raleway', sans-serif;
 }
 
 body {
@@ -21,8 +21,8 @@ body {
 }
 
 .header h1 {
-   text-align: center; /* Elimina el margen superior e inferior del título */
-   font-family: 'Raleway', sans-serif;
+    text-align: center; /* Elimina el margen superior e inferior del título */
+    font-family: 'Raleway', sans-serif;
 }
 
 h1{
