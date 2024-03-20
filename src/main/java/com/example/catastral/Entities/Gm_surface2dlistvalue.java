@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 @Entity
-@Table(name = "gm_surface2dlistvalue", schema = "ric")
+@Table(name = "gm_surface2dlistvalue", schema = "public")
 public class Gm_surface2dlistvalue {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

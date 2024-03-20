@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "cc_metodooperacion", schema = "ric")
+@Table(name = "cc_metodooperacion", schema = "public")
 public class Cc_metodooperacion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

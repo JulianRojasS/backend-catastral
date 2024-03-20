@@ -3,7 +3,7 @@ package com.example.catastral.Entities;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "gm_geometry2dlistvalue", schema = "ric")
+@Table(name = "gm_geometry2dlistvalue", schema = "public")
 public class Gm_geometry2dlistvalue {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
