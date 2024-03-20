@@ -22,6 +22,16 @@ public class col_miembrosService {
     public Col_miembros col_miembros (Integer t_id) {
         return repository.findById(t_id).get();
     }
+    public ArrayList<Col_miembros> col_miembrosPorAgrupacion (Integer t_id) {
+        ArrayList<Col_miembros> col_miembros = this.todo();
+        ArrayList<Col_miembros> response = new ArrayList<Col_miembros>();
+        for (Col_miembros miembros: col_miembros) {
+            if (miembros.getRic_agrupacioni().getT_id().equals(t_id)) {
+                response.add(miembros);
+            }
+        }
+        return response;
+    }
     public boolean eliminarPorAgrupacion (Integer t_id) {
         ArrayList<Col_miembros> col_miembros = this.todo();
         boolean response = true;

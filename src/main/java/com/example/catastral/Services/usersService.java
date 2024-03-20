@@ -2,6 +2,7 @@ package com.example.catastral.Services;
 
 import com.example.catastral.Entities.Users;
 import com.example.catastral.Repositories.usersRepository;
+import org.apache.catalina.User;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -59,16 +60,14 @@ public class usersService {
         return false;
     }
 
-    public Boolean Actualizar (Integer id, Users u) {
-        Optional<Users> user_before = (Optional<Users>) repository.findById(id);
-
-        Users user = new Users(user_before.get().getId(), u.getNombre(), u.getEmail(), u.getContrasenia(), u.getRol());
-
-        if (repository.findById(user.getId()).isPresent()) {
-            repository.save(user);
-            return true;
+    public Users Actualizar (Integer id, Users u) {
+        Users user = new Users(u.getNombre(), u.getEmail(), u.getContrasenia(), u.getRol());
+        user.setId(id);
+        if (repository.findById(id).isPresent()) {
+                repository.save(user);
+                return user;
         }
-
-        return false;
+        return new Users();
     }
 }
+

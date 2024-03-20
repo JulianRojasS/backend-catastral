@@ -32,7 +32,6 @@ public class col_unidadfuenteController {
     }
     @PostMapping("/insertarCol_unidadfuente")
     public Col_unidadfuente col_unidadfuenteInsertar (@RequestBody Col_unidadfuente colUnidadfuente) {
-        System.out.println(colUnidadfuente);
         return service.crear(colUnidadfuente);
     }
 }

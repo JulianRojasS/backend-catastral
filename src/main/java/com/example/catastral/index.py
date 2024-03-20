@@ -1,4 +1,4 @@
-nombres = ['temporal_interesados']
+nombres = ["temporal_catastrotipo","temporal_condicionprediotipo","temporal_unidadadministrativabasicatipo","temporal_zonatipo","temporal_predio","temporal_destinacioneconomicatipo","temporal_estadotipo","temporal_gestorcatastral","temporal_operadorcatastral","temporal_derecho","entidades","control_cambios","temporal_estadociviltipo","temporal_interesadodocumentotipo","temporal_sexotipo","temporal_grupointeresadotipo","temporal_derechotipo","temporal_estadodisponibilidadtipo","temporal_fuenteadministrativatipo","temporal_forma_presentacion_codigo","temporal_miembros","temporal_interesado","temporal_grupoetnicotipo","temporal_interesadotipo","temporal_agrupacioninteresados","temporal_fuenteadministrativa"]
 tipos = ['Repository', 'Controller', 'Service']
 
 def crear (nombre, tipo, i):
@@ -31,4 +31,4 @@ def editarArchivos():
     for nombre in nombres:
         editar(nombre)
         
-editarArchivos()
+crearArchivos()

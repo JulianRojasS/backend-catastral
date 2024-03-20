@@ -21,21 +21,6 @@ public class usersController {
         return service.todo();
     }
 
-    @GetMapping(path = "/usaurio")
-    public List<String> getEmailsAndPasswords() {
-        List<Users> usersList = service.todo();
-        List<String> emailsAndPasswords = new ArrayList<>();
-
-        for (Users user : usersList) {
-            String email = user.getEmail();
-            String password = user.getContrasenia();
-
-            emailsAndPasswords.add("Email: " + email + ", Contraseña: " + password);
-        }
-
-        return emailsAndPasswords;
-    }
-
     @GetMapping(path = "/User/{email}")
     public Users User (@PathVariable("email") String email) {
         return service.UserByEmail(email);
@@ -47,7 +32,7 @@ public class usersController {
     }
 
     @PutMapping("/actualizarUsuario/{id}")
-    public Boolean actualizar (@PathVariable("id") Integer id, Users u) {
+    public Users actualizar (@PathVariable("id") Integer id, Users u) {
         return service.Actualizar(id, u);
     }
 

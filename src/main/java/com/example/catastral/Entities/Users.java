@@ -1,6 +1,9 @@
 package com.example.catastral.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+
+import java.util.Set;
 
 @Entity
 @Table(name = "users", schema = "temporal")
@@ -18,8 +21,11 @@ public class Users {
     @Column(nullable = false, length = 50)
     private String rol;
 
-    public Users(Integer id, String nombre, String email, String contrasenia, String rol) {
-        this.id = id;
+    @OneToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
+    private Set<Control_cambios> controlcambios;
+
+    public Users( String nombre, String email, String contrasenia, String rol) {
         this.nombre = nombre;
         this.email = email;
         this.contrasenia = contrasenia;
@@ -32,6 +38,10 @@ public class Users {
 
     public Integer getId() {
         return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNombre() {
