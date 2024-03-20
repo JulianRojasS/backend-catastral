@@ -8,7 +8,7 @@ import java.util.Set;
 import java.util.UUID;
 
 @Entity
-@Table(name = "ric_operadorcatastral", schema = "ric")
+@Table(name = "ric_operadorcatastral", schema = "public")
 public class Ric_operadorcatastral {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

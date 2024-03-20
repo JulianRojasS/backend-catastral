@@ -9,7 +9,7 @@ import java.awt.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "extinteresado", schema = "ric")
+@Table(name = "extinteresado", schema = "public")
 public class Extinteresado {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

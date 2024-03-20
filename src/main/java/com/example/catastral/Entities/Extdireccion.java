@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "extdireccion", schema = "ric")
+@Table(name = "extdireccion", schema = "public")
 public class Extdireccion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,7 +18,7 @@ public class Extdireccion {
     private Extdireccion_tipo_direccion extdireccion_tipo_direccion;
     @Column(nullable = true)
     private Boolean es_direccion_principal;
-    @Column(nullable = true, columnDefinition = "public.geometry(multipolygonz, 9377)")
+    @Column(nullable = true, columnDefinition = "public.geometry(pointz, 9377)")
     private String localizacion;
     @Column(nullable = true)
     private String codigo_postal;

@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "ric_sexotipo", schema = "ric")
+@Table(name = "ric_sexotipo", schema = "public")
 public class Ric_sexotipo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -3,7 +3,7 @@ package com.example.catastral.Entities;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "fraccion", schema = "ric")
+@Table(name = "fraccion", schema = "public")
 public class Fraccion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

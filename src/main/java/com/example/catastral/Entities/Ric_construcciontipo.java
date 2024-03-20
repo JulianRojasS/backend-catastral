@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 
 import java.util.Set;
 @Entity
-@Table(name = "ric_construcciontipo", schema = "ric")
+@Table(name = "ric_construcciontipo", schema = "public")
 public class Ric_construcciontipo {
     @JsonIgnore
     @Id

@@ -9,7 +9,7 @@ import java.util.Set;
 import java.util.UUID;
 
 @Entity
-@Table(name = "ric_nu_caraslindero", schema = "ric")
+@Table(name = "ric_nu_caraslindero", schema = "public")
 public class Ric_nu_caraslindero {
     @JsonIgnore
     @Id
