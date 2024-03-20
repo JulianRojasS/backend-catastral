@@ -25,6 +25,10 @@ public class col_miembrosController {
     public Col_miembros col_miembros (@PathVariable("t_id") Integer t_id) {
         return service.col_miembros(t_id);
     }
+    @PostMapping("/col_miembrosAgrupacion/{t_id}")
+    public ArrayList<Col_miembros> col_miembrosPorAgrupacion (@PathVariable("t_id") Integer t_id) {
+        return service.col_miembrosPorAgrupacion(t_id);
+    }
     @DeleteMapping("/eliminarCol_miembrosByAgrupacion/{t_id}")
     public boolean col_miembrosEliminarPorAgrupacion (@PathVariable("t_id") Integer t_id) {
         return service.eliminarPorAgrupacion(t_id);
