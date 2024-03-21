@@ -16,7 +16,7 @@ public class control_cambiosController {
         this.service = service;
     }
 
-    @GetMapping("/control_cambioss")
+    @PostMapping("/control_cambioss")
     public ArrayList<Control_cambios> todo () {
         return service.todo();
     }
@@ -25,9 +25,12 @@ public class control_cambiosController {
     public Control_cambios control_cambios (@PathVariable("t_id") Integer t_id) {
         return service.control_cambios(t_id);
     }
-
     @PostMapping("/sendHistory")
     public boolean insertar (@RequestBody Control_cambios control_cambios) {
         return service.insertar(control_cambios);
+    }
+    @PostMapping("/controlCambiosEntidad/{entidad}")
+    public ArrayList<Control_cambios> cambiosPorEntidad (@PathVariable("entidad") Integer entidad) {
+        return service.control_cambiosPorEntidad(entidad);
     }
 }
