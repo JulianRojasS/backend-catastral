@@ -147,5 +147,4 @@ function showSection(sectionId) {
 
     // Mostrar la sección correspondiente y resaltar el botón
     document.getElementById(sectionId).style.display = 'block';
-    document.getElementById(sectionId + 'Btn').classList.add('active');
 }
