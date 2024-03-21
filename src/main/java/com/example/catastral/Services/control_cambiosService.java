@@ -5,8 +5,6 @@ import com.example.catastral.Repositories.control_cambiosRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 @Service
 public class control_cambiosService {
@@ -30,5 +28,15 @@ public class control_cambiosService {
         } else {
             return false;
         }
+    }
+    public ArrayList<Control_cambios> control_cambiosPorEntidad (Integer entidad) {
+        ArrayList<Control_cambios> control_cambios = this.todo();
+        ArrayList<Control_cambios> response = new ArrayList<Control_cambios>();
+        for (Control_cambios cambios: control_cambios) {
+            if (cambios.getEntidades().getId().equals(entidad)) {
+                response.add(cambios);
+            }
+        }
+        return response;
     }
 }
