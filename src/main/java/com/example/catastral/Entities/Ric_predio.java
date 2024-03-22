@@ -5,8 +5,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.text.DecimalFormat;
 import java.util.Set;
 import java.util.UUID;
 
@@ -256,8 +258,8 @@ public class Ric_predio {
         this.col_unidadadministrativabasicatipo = col_unidadadministrativabasicatipo;
     }
 
-    public Float getAvaluo_catastral() {
-        return avaluo_catastral;
+    public BigDecimal getAvaluo_catastral() {
+        return BigDecimal.valueOf(avaluo_catastral);
     }
 
     public void setAvaluo_catastral(Float avaluo_catastral) {

@@ -12,11 +12,11 @@ import org.springframework.transaction.annotation.Transactional;
 public interface col_miembrosRepository extends CrudRepository<Col_miembros, Integer> {
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO ric.col_miembros (interesado_ric_interesado, interesado_ric_agrupacioninteresados, agrupacion, participacion) values (:interesado, null, :agrupacion, :participacion)", nativeQuery = true)
+    @Query(value = "INSERT INTO col_miembros (interesado_ric_interesado, interesado_ric_agrupacioninteresados, agrupacion, participacion) values (:interesado, null, :agrupacion, :participacion)", nativeQuery = true)
     Integer insertar (@Param("interesado") Integer interesado, @Param("agrupacion") Integer agrupacion, @Param("participacion") Float participacion);
 
     @Modifying
     @Transactional
-    @Query(value = "DELETE FROM ric.col_miembros WHERE t_id = :t_id", nativeQuery = true)
+    @Query(value = "DELETE FROM col_miembros WHERE t_id = :t_id", nativeQuery = true)
     Integer eliminar (@Param("t_id") Integer t_id);
 }

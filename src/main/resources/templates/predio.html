@@ -52,7 +52,7 @@
                 <label for="nupre">Nupre</label>
                 <input id="nupre" th:value="${(predio.nupre == null) ? 'SIN REGISTRO' : predio.nupre}" disabled>
                 <label for="avaluo_catastral">Avaluo Catastral</label>
-                <input id="avaluo_catastral" th:value="${(predio.avaluo_catastral == null) ? 'SIN REGISTRO' : predio.avaluo_catastral}" disabled>
+                <input id="avaluo_catastral" th:value="${(predio.avaluo_catastral == null) ? 'SIN REGISTRO' : predio.getAvaluo_catastral()}" disabled>
                 <label for="p_tipo">Tipo</label>
                 <input id="p_tipo" th:value="${(predio.col_unidadadministrativabasicatipo == null) ? 'SIN REGISTRO' : predio.col_unidadadministrativabasicatipo.dispname}" disabled>
                 <label for="condicion_predio">Condición del predio</label>
