@@ -80,22 +80,31 @@ function See_Interesado (t_id) {
         url: `http://localhost:3000/ric_interesado/${t_id}`,
         type: "POST",
         datatype: "JSON",
-        success: (res) => {
+        success: (interesado) => {
             const nombre = document.createElement("h2")
-            nombre.innerText = `Nombre: ${res.nombre}`
+            nombre.innerText = `Nombre: ${interesado.nombre}`
             modal.appendChild(nombre)
             const tipodocumento = document.createElement("p")
-            tipodocumento.innerText = `Tipo de documento: ${res.ric_interesadodocumentotipo.dispname}`
+            tipodocumento.innerText = `Tipo de documento: ${interesado.ric_interesadodocumentotipo.dispname}`
             modal.appendChild(tipodocumento)
             const dociden = document.createElement ("p")
-            dociden.innerText = `Número de documento: ${res.documento_identidad}`
+            dociden.innerText = `Número de documento: ${interesado.documento_identidad}`
             modal.appendChild(dociden)
+            const close_modal_button = document.createElement("button")
+            close_modal_button.id = "close-modal"
+            close_modal_button.innerText = "x"
+            close_modal_button.addEventListener("click", () => {
+                document.getElementById("modal").style.display = "none"
+                document.body.style.overflow = "auto"
+            })
+            modal.appendChild(close_modal_button)
             const scroll_table_modal = document.createElement("div")
             scroll_table_modal.className = "scrool-table-modal"
             const modal_table = document.createElement("table")
+            modal_table.className = "tablas-consultas"
             const modal_thead = document.createElement("thead")
             modal_table.appendChild(modal_thead)
-            const ths = ["Codigo Homologado", "Numero Predial", "Numero predial Anterior", "Matricula inmobiliaria"]
+            const ths = ["Codigo Homologado", "Numero Predial", "Numero predial Anterior", "Matricula inmobiliaria", "Ver"]
             ths.forEach((e) => {
                 const th = document.createElement("th")
                 th.innerHTML = e
@@ -121,6 +130,14 @@ function See_Interesado (t_id) {
                         const mi = document.createElement("td")
                         mi.innerHTML = e.matricula_inmobiliaria
                         tr.appendChild(mi)
+                        const see = document.createElement("td")
+                        see.style.backgroundColor = "black"
+                        const seeButton = document.createElement("button")
+                        seeButton.addEventListener("click", () => window.open(predio+e.predio, "_blank"))
+                        seeButton.innerText = "Ver mas"
+                        seeButton.target = "_blank"
+                        see.appendChild(seeButton)
+                        tr.appendChild(see)
                         modal_tbody.appendChild(tr)
                     })
                     modal_table.appendChild(modal_tbody)
