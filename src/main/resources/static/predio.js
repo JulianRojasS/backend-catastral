@@ -133,7 +133,7 @@ function See_Interesado (t_id) {
                         const see = document.createElement("td")
                         see.style.backgroundColor = "black"
                         const seeButton = document.createElement("button")
-                        seeButton.addEventListener("click", () => window.open(predio+e.predio, "_blank"))
+                        seeButton.addEventListener("click", () => window.open("http://localhost:3000/predio/"+e.predio, "_blank"))
                         seeButton.innerText = "Ver mas"
                         seeButton.target = "_blank"
                         see.appendChild(seeButton)

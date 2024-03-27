@@ -258,8 +258,9 @@ public class Ric_predio {
         this.col_unidadadministrativabasicatipo = col_unidadadministrativabasicatipo;
     }
 
-    public BigDecimal getAvaluo_catastral() {
-        return BigDecimal.valueOf(avaluo_catastral);
+    public String getAvaluo_catastral() {
+        DecimalFormat num = new DecimalFormat("#,###.00");
+        return num.format(avaluo_catastral);
     }
 
     public void setAvaluo_catastral(Float avaluo_catastral) {
