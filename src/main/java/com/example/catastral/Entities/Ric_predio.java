@@ -259,7 +259,7 @@ public class Ric_predio {
     }
 
     public String getAvaluo_catastral() {
-        DecimalFormat num = new DecimalFormat("#,###.00");
+        DecimalFormat num = new DecimalFormat("####00");
         return num.format(avaluo_catastral);
     }
 
